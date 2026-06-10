@@ -13,7 +13,7 @@ interface PetProfileModalProps {
     isOpen?: boolean;
     pet?: PetProfile | null;
     onClose: () => void;
-    onFormSubmit?: (formData: PetProfileForm) => Promise<void>; // ← ПЕРЕИМЕНОВАНО
+    onSubmit?: (formData: PetProfileForm) => Promise<void>; // ← Вернули имя onSubmit
     initialData?: Partial<PetProfileForm>;
     isSubmitting?: boolean;
     error?: string | null;
@@ -23,10 +23,10 @@ function PetProfileModal({
     isOpen,
     pet,
     onClose,
-    onFormSubmit, // ← ПЕРЕИМЕНОВАНО
-    initialData: _initialData, // ← Подчёркивание для неиспользуемой
-    isSubmitting: _isSubmitting, // ← Подчёркивание
-    error: _error, // ← Подчёркивание
+    onSubmit, // ← Пропс называется onSubmit
+    initialData: _initialData,
+    isSubmitting: _isSubmitting,
+    error: _error,
 }: PetProfileModalProps) {
     const addPetProfile = usePetStore((state) => state.addPetProfile);
     const updatePetProfile = usePetStore((state) => state.updatePetProfile);
@@ -55,9 +55,9 @@ function PetProfileModal({
             reset({
                 name: pet.name || "",
                 type: (pet.type || "dog") as "dog" | "cat" | "other",
-                isChipped: pet.is_chipped || false,
+                isChipped: pet.isChipped || false,
                 breed: pet.breed || "",
-                birthDate: pet.birth_date || "",
+                birthDate: pet.birthDate || "",
                 color: pet.color || "",
                 avatar: pet.avatar || "",
                 notes: pet.notes || "",
@@ -76,12 +76,11 @@ function PetProfileModal({
         }
     }, [pet, reset]);
 
-    // ✅ Внутренняя функция обработки формы
+    // ✅ Внутренняя функция с ДРУГИМ именем, чтобы не конфликтовать с пропсом
     const handleFormSubmit = async (data: PetProfileForm) => {
         try {
-            if (onFormSubmit) {
-                // Если передан внешний обработчик — используем его
-                await onFormSubmit(data);
+            if (onSubmit) {
+                await onSubmit(data);
             } else if (pet) {
                 await updatePetProfile(pet.id, data);
             } else {
