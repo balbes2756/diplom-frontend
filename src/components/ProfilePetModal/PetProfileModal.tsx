@@ -10,11 +10,14 @@ import { usePetStore } from "../../store/usePetStore";
 import styles from "./PetProfileModal.module.css";
 
 interface PetProfileModalProps {
+    isOpen?: boolean;
     pet?: PetProfile | null;
     onClose: () => void;
+    onSubmit?: (formData: PetProfileForm) => Promise<void>; // ← ДОБАВЬ если нужно
+    initialData?: Partial<PetProfileForm>;
 }
 
-function PetProfileModal({ pet, onClose }: PetProfileModalProps) {
+function PetProfileModal({ isOpen, pet, onClose }: PetProfileModalProps) {
     const addPetProfile = usePetStore((state) => state.addPetProfile);
     const updatePetProfile = usePetStore((state) => state.updatePetProfile);
 
@@ -75,6 +78,8 @@ function PetProfileModal({ pet, onClose }: PetProfileModalProps) {
             console.error("Ошибка сохранения профиля:", error);
         }
     };
+
+    if (!isOpen) return null;
 
     return (
         <div className={styles.modal}>

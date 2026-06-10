@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
@@ -25,7 +25,8 @@ interface Props {
 }
 
 function CreateArticleModal({ isOpen, onClose }: Props) {
-    // const [, setIsClosing] = useState(false);
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const [isClosing, setIsClosing] = useState(false);
     const { createArticle, isLoading } = useArticleStore();
     const { addToast } = useToastStore();
 
