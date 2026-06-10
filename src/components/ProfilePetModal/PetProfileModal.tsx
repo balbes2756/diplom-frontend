@@ -55,9 +55,9 @@ function PetProfileModal({
             reset({
                 name: pet.name || "",
                 type: (pet.type || "dog") as "dog" | "cat" | "other",
-                isChipped: pet.isChipped || false,
+                isChipped: pet.is_chipped || false,
                 breed: pet.breed || "",
-                birthDate: pet.birthDate || "",
+                birthDate: pet.birth_date || "",
                 color: pet.color || "",
                 avatar: pet.avatar || "",
                 notes: pet.notes || "",
