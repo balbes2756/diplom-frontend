@@ -1,0 +1,415 @@
+.modalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    z-index: 1000;
+    animation: fadeIn 0.3s ease;
+}
+
+.modalOverlay.closing {
+    animation: fadeOut 0.4s ease forwards;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.modal {
+    background: white;
+    border-radius: 20px 20px 0 0;
+    padding: 32px;
+    width: 100%;
+    max-width: 560px;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+    box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.2);
+    animation: slideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    z-index: 1001;
+}
+
+.modal.modalClosing {
+    animation: slideDown 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+@keyframes slideUp {
+    from {
+        transform: translateY(100%);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+@keyframes slideDown {
+    from {
+        transform: translateY(0);
+    }
+    to {
+        transform: translateY(100%);
+    }
+}
+
+.closeButton {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: none;
+    border: none;
+    font-size: 28px;
+    cursor: pointer;
+    color: #6b7280;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all 0.2s;
+}
+
+.closeButton:hover {
+    background: #f3f4f6;
+    color: #1f2937;
+}
+
+.title {
+    font-size: 24px;
+    font-weight: 700;
+    color: #1f2937;
+    margin: 0 0 24px 0;
+    text-align: center;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.formGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+.label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #374151;
+}
+
+.input,
+.select,
+.textarea {
+    padding: 12px 14px;
+    border: 2px solid #e5e7eb;
+    border-radius: 10px;
+    font-size: 15px;
+    color: #1f2937;
+    background: white;
+    transition: border-color 0.2s;
+    outline: none;
+    font-family: inherit;
+}
+
+.input:focus,
+.select:focus,
+.textarea:focus {
+    border-color: #3b82f6;
+}
+
+.textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+.radioGroup {
+    display: flex;
+    gap: 16px;
+}
+
+.radioButton {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 16px;
+    border: 2px solid #e5e7eb;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.2s;
+    flex: 1;
+    justify-content: center;
+}
+
+.radioButton:has(input:checked) {
+    border-color: #3b82f6;
+    background: #eff6ff;
+}
+
+.radioButton input {
+    display: none;
+}
+
+.radioIcon {
+    font-size: 16px;
+}
+
+.error {
+    font-size: 13px;
+    color: #ef4444;
+}
+
+.actions {
+    display: flex;
+    gap: 12px;
+    margin-top: 8px;
+}
+
+.cancelButton {
+    flex: 1;
+    padding: 14px;
+    background: #f3f4f6;
+    color: #4b5563;
+    border: none;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.cancelButton:hover {
+    background: #e5e7eb;
+}
+
+.submitButton {
+    flex: 2;
+    padding: 14px;
+    background: #3b82f6;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.submitButton:hover:not(:disabled) {
+    background: #2563eb;
+    transform: translateY(-1px);
+}
+
+.submitButton:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+@media (max-width: 640px) {
+    .modal {
+        padding: 24px 20px;
+        border-radius: 16px 16px 0 0;
+    }
+
+    .row {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Добавь в конец файла */
+.cityInputRow {
+    display: flex;
+    gap: 8px;
+}
+
+.cityInputRow .input {
+    flex: 1;
+}
+
+.mapPickBtn {
+    padding: 0 16px;
+    background: #f3f4f6;
+    border: 2px solid #e5e7eb;
+    border-radius: 10px;
+    font-size: 15px;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all 0.2s;
+    color: #1f2937;
+}
+
+.mapPickBtn:hover {
+    background: #e5e7eb;
+    border-color: #d1d5db;
+}
+
+.coordsIndicator {
+    margin-top: 8px;
+    font-size: 12px;
+    color: #10b981;
+    font-weight: 500;
+    background: #ecfdf5;
+    padding: 6px 10px;
+    border-radius: 6px;
+}
+
+/* ===== Загрузка изображения ===== */
+.uploadArea {
+    border: 2px dashed #cbd5e1;
+    border-radius: 12px;
+    padding: 48px 24px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s;
+    background: #f8fafc;
+}
+
+.uploadArea:hover {
+    border-color: #6366f1;
+    background: #f1f5f9;
+    transform: translateY(-2px);
+}
+
+.uploadPlaceholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    color: #64748b;
+}
+
+.uploadIcon {
+    font-size: 48px;
+    opacity: 0.5;
+}
+
+.uploadPlaceholder p {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 600;
+    color: #475569;
+}
+
+.uploadPlaceholder small {
+    font-size: 13px;
+    color: #94a3b8;
+}
+
+.imagePreview {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 2px solid #e2e8f0;
+    width: 100%;
+}
+
+.imagePreview img {
+    width: 100%;
+    height: auto; /* ← Автоматическая высота */
+    object-fit: contain; /* ← Показываем всё изображение */
+    display: block;
+    max-height: 320px;
+}
+
+.removeBtn {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 36px;
+    height: 36px;
+    background: rgba(220, 38, 38, 0.95);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(4px);
+}
+
+.removeBtn:hover {
+    background: rgba(220, 38, 38, 1);
+    transform: scale(1.1);
+    box-shadow: 0 4px 12px rgba(220, 38, 38, 0.4);
+}
+
+.hint {
+    font-size: 12px;
+    color: #94a3b8;
+    margin-top: 4px;
+}
+
+/* Общая ошибка формы */
+.generalError {
+    background: #fef2f2;
+    border: 2px solid #ef4444;
+    border-radius: 8px;
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 16px;
+    animation: shake 0.5s ease-in-out;
+}
+
+.errorIcon {
+    font-size: 24px;
+}
+
+.errorText {
+    flex: 1;
+    color: #dc2626;
+    font-weight: 500;
+    font-size: 14px;
+}
+
+.dismissError {
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: #991b1b;
+    cursor: pointer;
+    padding: 0 4px;
+    line-height: 1;
+    transition: color 0.2s;
+}
+
+.dismissError:hover {
+    color: #7f1d1d;
+}

@@ -1,0 +1,118 @@
+.mapContainer {
+    width: 100%;
+    height: 100%;
+    min-height: 600px;
+    position: relative;
+}
+
+.map {
+    width: 100%;
+    height: 100%;
+    min-height: 600px;
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+/* 🔥 Глобальные стили для попапов 2GIS (переопределяем дефолтные) */
+:global(.dg-popup-content) {
+    margin: 0 !important;
+    padding: 0 !important;
+    width: auto !important;
+    min-width: auto !important;
+    line-height: 1.4 !important;
+}
+
+:global(.dg-popup-content-wrapper) {
+    padding: 0 !important;
+    border-radius: 12px !important;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15) !important;
+    overflow: hidden;
+}
+
+:global(.dg-popup-tip) {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* ================= POPUP CARD ================= */
+:global(.popup-card) {
+    font-family:
+        system-ui,
+        -apple-system,
+        sans-serif;
+    min-width: 240px;
+    max-width: 280px;
+    color: #334155;
+    background: #fff;
+}
+
+:global(.popup-header) {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 14px 10px;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+:global(.popup-name) {
+    font-size: 16px;
+    font-weight: 700;
+    color: #0f172a;
+    line-height: 1.2;
+}
+
+:global(.popup-status) {
+    font-size: 11px;
+    font-weight: 700;
+    padding: 3px 8px;
+    border-radius: 6px;
+    white-space: nowrap;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+}
+
+:global(.status-lost) {
+    background: #fef2f2;
+    color: #dc2626;
+}
+
+:global(.status-found) {
+    background: #f0fdf4;
+    color: #16a34a;
+}
+
+:global(.popup-details) {
+    padding: 10px 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    font-size: 13px;
+    color: #475569;
+}
+
+:global(.popup-detail) {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+:global(.popup-footer) {
+    padding: 0 14px 12px;
+}
+
+:global(.popup-btn) {
+    width: 100%;
+    padding: 9px;
+    background: #6366f1;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+    text-align: center;
+}
+
+:global(.popup-btn:hover) {
+    background: #4f46e5;
+}

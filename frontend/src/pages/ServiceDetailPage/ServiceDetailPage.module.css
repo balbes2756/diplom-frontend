@@ -1,0 +1,328 @@
+* {
+    padding: 0;
+    margin: 0;
+    scrollbar-width: none;
+}
+
+.container {
+    width: 80%;
+    border: solid 2px;
+    border-radius: 10px;
+}
+
+/* Секция */
+.section {
+    padding: 40px 0;
+    border-bottom: 1px solid #e5e7eb;
+    background-color: white;
+    border-radius: 10px;
+}
+
+.section:last-child {
+    border-bottom: none;
+}
+
+.sectionContent {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.sectionTitle {
+    font-size: 28px;
+    font-weight: 700;
+    color: #1f2937;
+    margin-bottom: 24px;
+}
+
+/* Шапка услуги */
+.header {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    padding: 32px;
+    background-color: #f9fafb;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.avatar {
+    font-size: 64px;
+    width: 100px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    border-radius: 50%;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.headerInfo {
+    flex: 1;
+}
+
+.headerTitle {
+    font-size: 32px;
+    font-weight: 700;
+    color: #1f2937;
+    margin-bottom: 8px;
+}
+
+.headerCategory {
+    font-size: 18px;
+    font-weight: 600;
+    color: #0ea5e9;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.headerRating {
+    font-size: 16px;
+    color: #6b7280;
+}
+
+.orderButton {
+    background-color: #0ea5e9;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 16px 32px;
+    font-size: 18px;
+    font-weight: 700;
+    cursor: pointer;
+    transition:
+        background-color 0.3s ease,
+        transform 0.2s ease;
+    white-space: nowrap;
+    min-width: 180px;
+}
+
+.orderButton:hover {
+    background-color: #0284c7;
+    transform: translateY(-2px);
+}
+
+.orderButton:active {
+    transform: translateY(0);
+}
+
+/* Описание специалиста */
+.description {
+    font-size: 16px;
+    color: #4b5563;
+    line-height: 1.7;
+}
+
+.description p {
+    margin-bottom: 16px;
+}
+
+/* Список услуг */
+.servicesList {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+}
+
+.serviceItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 20px;
+    background-color: #f9fafb;
+    border-radius: 8px;
+    border-left: 4px solid #0ea5e9;
+}
+
+.serviceName {
+    font-size: 16px;
+    font-weight: 600;
+    color: #1f2937;
+}
+
+.servicePrice {
+    font-size: 18px;
+    font-weight: 700;
+    color: #0ea5e9;
+}
+
+/* Отзывы клиентов */
+.reviewsList {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+}
+
+.reviewCard {
+    background-color: #f9fafb;
+    border-radius: 12px;
+    padding: 24px;
+    border: 1px solid #e5e7eb;
+}
+
+.reviewHeader {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+.reviewAvatar {
+    font-size: 32px;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.reviewInfo {
+    flex: 1;
+}
+
+.reviewAuthor {
+    font-size: 16px;
+    font-weight: 700;
+    color: #1f2937;
+}
+
+.reviewDate {
+    font-size: 13px;
+    color: #6b7280;
+}
+
+.reviewRating {
+    color: #f59e0b;
+    font-size: 14px;
+    margin-bottom: 12px;
+}
+
+.reviewText {
+    font-size: 15px;
+    color: #4b5563;
+    line-height: 1.6;
+}
+
+/* Табы */
+.tabs {
+    display: flex;
+    gap: 8px;
+    border-bottom: 2px solid #e5e7eb;
+    margin-bottom: 32px;
+}
+
+.tab {
+    padding: 12px 24px;
+    background: none;
+    border: none;
+    border-bottom: 3px solid transparent;
+    font-size: 16px;
+    font-weight: 600;
+    color: #6b7280;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.tab:hover {
+    color: #1f2937;
+}
+
+.tab.activeTab {
+    color: #0ea5e9;
+    border-bottom-color: #0ea5e9;
+}
+
+.tab.activeTab::after {
+    content: "";
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: #0ea5e9;
+    border-radius: 2px 2px 0 0;
+}
+
+/* Контент табов */
+.tabContent {
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Адаптивность */
+@media (max-width: 1024px) {
+    .servicesList {
+        grid-template-columns: 1fr;
+    }
+
+    .reviewsList {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 20px 0;
+    }
+
+    .section {
+        padding: 30px 0;
+    }
+
+    .sectionTitle {
+        font-size: 24px;
+        margin-bottom: 16px;
+    }
+
+    .header {
+        flex-direction: column;
+        text-align: center;
+        gap: 20px;
+        padding: 24px;
+    }
+
+    .avatar {
+        font-size: 48px;
+        width: 80px;
+        height: 80px;
+    }
+
+    .headerTitle {
+        font-size: 24px;
+    }
+
+    .headerCategory {
+        font-size: 16px;
+    }
+
+    .orderButton {
+        width: 100%;
+        padding: 14px;
+        font-size: 16px;
+    }
+
+    .description {
+        font-size: 15px;
+    }
+
+    .reviewHeader {
+        flex-direction: column;
+        text-align: center;
+    }
+}

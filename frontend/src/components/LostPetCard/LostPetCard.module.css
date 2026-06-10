@@ -1,0 +1,158 @@
+.card {
+    background-color: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.cardImageWrapper {
+    position: relative;
+    width: 100%;
+}
+
+.cardImage {
+    width: 100%;
+    height: auto; /* ← Автоматическая высота */
+    object-fit: contain; /* ← Показываем всё изображение */
+    display: block;
+    max-height: 240px;
+}
+
+.imagePlaceholder {
+    width: 100%;
+    height: 200px; /* ← Оставляем для заглушки */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f1f5f9;
+}
+
+.statusBadge {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: white;
+}
+
+.badgeLost {
+    background-color: #ef4444; /* Красный для пропавших */
+}
+
+.badgeFound {
+    background-color: #10b981; /* Зеленый для найденных */
+}
+
+.cardContent {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    flex: 1;
+}
+
+.cardHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cardName {
+    font-size: 18px;
+    font-weight: 700;
+    color: #1f2937;
+    margin: 0;
+}
+
+.cardDate {
+    font-size: 13px;
+    color: #9ca3af;
+    font-weight: 600;
+}
+
+.cardDescription {
+    font-size: 14px;
+    color: #4b5563;
+    line-height: 1.5;
+    margin: 0;
+    display: -webkit-box;
+    line-clamp: 3;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.cardFooter {
+    margin-top: auto;
+    padding-top: 12px;
+    border-top: 1px solid #f3f4f6;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cardCity {
+    font-size: 14px;
+    color: #6b7280;
+    font-weight: 500;
+}
+
+.card:hover .deleteButton {
+    opacity: 1;
+}
+
+.deleteButton {
+    /* Убираем absolute positioning */
+    position: static;
+
+    /* Новые стили */
+    width: 32px;
+    height: 32px;
+    background: #fef2f2;
+    border: 1px solid #fecaca;
+    border-radius: 6px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    padding: 0;
+    flex-shrink: 0; /* Чтобы кнопка не сжималась */
+}
+
+.deleteButton:hover {
+    background: #fee2e2;
+    border-color: #ef4444;
+    transform: scale(1.05);
+    box-shadow: 0 2px 6px rgba(239, 68, 68, 0.2);
+}
+
+.deleteButton:active {
+    transform: scale(0.95);
+}
+
+.deleteButton svg {
+    fill: #dc2626;
+    width: 18px;
+    height: 18px;
+}
+
+.deleteButton:hover svg {
+    fill: #b91c1c;
+}

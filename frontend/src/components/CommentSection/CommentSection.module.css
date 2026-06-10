@@ -1,0 +1,284 @@
+.container {
+    margin-top: 48px;
+    padding-top: 24px;
+    border-top: 2px solid #f1f5f9;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+.title {
+    font-size: 20px;
+    font-weight: 700;
+    color: #0f172a;
+    margin-bottom: 20px;
+}
+
+.form {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 32px;
+}
+
+.form input {
+    flex: 1;
+    height: 39px;
+    padding: 0 14px;
+    border: 1px solid #cbd5e1;
+    border-radius: 10px;
+    font-size: 16px;
+    font-family: inherit;
+    background: none;
+    color: #000;
+}
+
+.form input:focus {
+    outline: none;
+    border-color: #6366f1;
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+}
+
+.form button {
+    padding: 0 20px;
+    background: #6366f1;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    height: 39px;
+}
+
+.form button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.item {
+    display: flex;
+    gap: 12px;
+    padding: 16px;
+    background: #f8fafc;
+    border-radius: 12px;
+    width: 700px;
+    max-width: 100%;
+    min-width: 0;
+
+    overflow: visible !important;
+}
+
+.avatar {
+    width: 40px;
+    height: 40px;
+    background: #e2e8f0;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    overflow: hidden;
+}
+
+.avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.avatar span {
+    color: #64748b;
+    font-weight: 700;
+    font-size: 16px;
+}
+
+.body {
+    flex: 1;
+    min-width: 0;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 6px;
+    gap: 10px;
+}
+
+.headerWrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+}
+
+.user {
+    font-weight: 600;
+    color: #334155;
+}
+
+.date {
+    color: #94a3b8;
+    font-size: 14px;
+    flex-shrink: 0;
+}
+
+.text {
+    font-size: 15px;
+    color: #475569;
+    margin: 0;
+    line-height: 1.5;
+    word-break: break-word;
+    overflow-wrap: anywhere;
+    white-space: pre-wrap;
+}
+
+.dropdownWrapper {
+    position: relative;
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+    z-index: 100;
+}
+
+.dotsBtn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 24px; /* 🔥 Увеличили размер */
+    color: #94a3b8;
+    padding: 0 8px; /* 🔥 Добавили горизонтальный padding */
+    line-height: 1;
+    border-radius: 4px;
+    min-width: 32px; /* 🔥 Фиксированная минимальная ширина */
+    height: 32px; /* 🔥 Фиксированная высота */
+    display: flex; /* 🔥 Flex для центрирования */
+    align-items: center; /* 🔥 Центрирование по вертикали */
+    justify-content: center; /* 🔥 Центрирование по горизонтали */
+    font-family: Arial, sans-serif; /* 🔥 Явный шрифт */
+}
+
+.dotsBtn:hover {
+    color: #334155;
+    background: #f1f5f9;
+}
+
+.dropdownMenu {
+    position: absolute;
+    right: 0;
+    top: 120%;
+    background: white;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    z-index: 1000; /* 🔥 Высокий z-index */
+    min-width: 150px;
+    overflow: visible;
+    animation: fadeInDrop 0.15s ease-out;
+    padding-bottom: 8px;
+}
+
+@keyframes fadeInDrop {
+    from {
+        opacity: 0;
+        transform: translateY(-5px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.dropdownMenu button {
+    width: 100%;
+    padding: 10px 14px;
+    text-align: left;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    color: #334155;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.dropdownMenu button:hover {
+    background: #f8fafc;
+}
+
+.dropdownMenu .deleteOption {
+    color: #ef4444;
+    border-top: 1px solid #f1f5f9;
+}
+
+.dropdownMenu .deleteOption:hover {
+    background: #fef2f2;
+}
+
+.editMode {
+    margin-top: 8px;
+    width: 100%;
+    max-width: 600px; /* 🔥 Жесткое ограничение ширины */
+    box-sizing: border-box;
+}
+
+.editInput {
+    width: 100%;
+    max-width: 600px; /* 🔥 Не даем вылезти за границы */
+    box-sizing: border-box; /* 🔥 САМОЕ ГЛАВНОЕ: padding входит в ширину */
+
+    padding: 10px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 15px;
+    resize: vertical; /* Только вертикально */
+    min-height: 80px;
+    background: #ffffff; /* Белый фон */
+    color: #0f172a; /* Темный текст */
+    line-height: 1.5;
+}
+
+.editInput:focus {
+    outline: none;
+    border-color: #6366f1;
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+}
+
+.editActions {
+    display: flex;
+    gap: 8px;
+    margin-top: 8px;
+    justify-content: flex-end;
+}
+
+.editActions button {
+    padding: 6px 12px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    font-size: 13px;
+}
+
+.editActions button:first-child {
+    background: #f1f5f9;
+    color: #475569;
+}
+
+.editActions button:last-child {
+    background: #6366f1;
+    color: white;
+}
+
+.loading,
+.empty {
+    text-align: center;
+    color: #94a3b8;
+    font-style: italic;
+}

@@ -1,0 +1,462 @@
+.container {
+    width: 100%;
+    max-width: 1920px;
+    min-height: 100vh;
+    margin: 0 auto;
+    position: relative;
+    overflow-x: hidden;
+}
+
+.gridSection {
+    padding: 120px 40px 60px;
+    display: flex;
+    justify-content: center; /* Центр по горизонтали */
+    align-items: center;
+}
+
+.gridContainer {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto auto auto;
+    gap: 20px;
+    width: 75%;
+}
+
+.gridItem {
+    /* border: 2px solid #000;
+    padding: 20px; */
+    background: white;
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-weight: 600;
+    font-size: 18px;
+    color: #1e293b;
+    cursor: pointer;
+    min-height: 160px;
+}
+
+/* ----ПРОФИЛЬ---- */
+.cardProfile {
+    grid-column: span 2;
+    grid-row: span 1;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 28px;
+    background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+    border: 1px solid #e2e8f0;
+    cursor: default;
+}
+
+.profileHeader {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.avatarWrapper {
+    flex-shrink: 0;
+}
+
+.avatar {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid white;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.avatarFallback {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #6366f1, #8b5cf6);
+    color: white;
+    font-size: 48px;
+    font-weight: 700;
+}
+
+.profileInfo {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+}
+
+.userName {
+    font-size: 32px;
+    font-weight: 700;
+    color: #0f172a;
+    margin: 0;
+}
+
+.userEmail {
+    font-size: 16px;
+    color: #64748b;
+    margin: 0;
+}
+.btnGroup {
+    display: flex;
+    flex-direction: column;
+}
+
+.logoutButton {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 10px 18px;
+    background: #f8fafc;
+    color: #475569;
+    border: 2px solid #e2e8f0;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    margin-top: 16px;
+    align-self: flex-start;
+}
+
+.logoutButton:hover {
+    background: #eff6ff;
+    color: #f44445;
+    border-color: #ef44445c;
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.15);
+}
+
+.logoutIcon {
+    font-size: 18px;
+}
+
+.editProfileBtn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 10px 18px;
+    background: #f8fafc;
+    color: #475569;
+    border: 2px solid #e2e8f0;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    margin-top: 16px;
+    align-self: flex-start;
+}
+
+.editProfileBtn:hover {
+    background: #eff6ff;
+    border-color: #93c5fd;
+    color: #2563eb;
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.15);
+}
+
+.editProfileBtn:active {
+    transform: translateY(0);
+    background: #dbeafe;
+    box-shadow: none;
+}
+
+.cardStats {
+    grid-column: span 1;
+    grid-row: span 1;
+}
+
+/* ----ПИТОМЦЫ---- */
+.cardPets {
+    grid-column: span 1;
+    grid-row: span 2;
+}
+
+.addPetBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 14px 20px;
+    background: #6366f1;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    width: 100%;
+    margin-top: 8px;
+}
+.addPetBtn:hover {
+    background: #4f46e5;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+}
+.addIcon {
+    font-size: 18px;
+    font-weight: 700;
+}
+
+/* === 🐾 СТИЛИ ДЛЯ КАРТОЧКИ ПИТОМЦЫ === */
+
+.cardPets {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    padding: 20px;
+    min-height: 280px;
+    cursor: default;
+}
+
+.petsHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.cardTitle {
+    font-size: 18px;
+    font-weight: 700;
+    color: #0f172a;
+    margin: 0;
+}
+
+.addPetBtn {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    background: #6366f1;
+    color: white;
+    border: none;
+    font-size: 20px;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+}
+
+.addPetBtn:hover {
+    background: #4f46e5;
+    transform: scale(1.05);
+}
+
+/* === СПИСОК ПИТОМЦЕВ === */
+
+.petsList {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    overflow-y: auto;
+    max-height: 300px;
+    padding-right: 6px;
+    scrollbar-width: auto;
+    scroll-snap-stop: always;
+}
+
+/* Скроллбар для списка */
+.petsList::-webkit-scrollbar {
+    width: 5px;
+}
+.petsList::-webkit-scrollbar-track {
+    background: #f1f5f9;
+    border-radius: 4px;
+}
+.petsList::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 4px;
+}
+.petsList::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
+}
+
+/* === ЭЛЕМЕНТ СПИСКА === */
+
+.petItem {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 16px 18px;
+    background: #f8fafc;
+    border-radius: 14px;
+    border: 1px solid #e2e8f0;
+    transition: all 0.2s;
+    cursor: pointer;
+    user-select: none;
+}
+
+.petItem:hover {
+    background: #f1f5f9;
+    border-color: #cbd5e1;
+}
+
+.petActions {
+    display: flex;
+    gap: 8px;
+    flex-shrink: 0;
+}
+
+.actionBtn {
+    width: 34px;
+    height: 34px;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+    background: #ffffff;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.actionBtn:hover {
+    background: #f1f5f9;
+    border-color: #cbd5e1;
+    transform: scale(1.08);
+}
+
+.deleteBtn:hover {
+    background: #fee2e2;
+    border-color: #fecaca;
+    color: #ef4444;
+}
+
+.wrapp {
+    display: flex;
+    flex-direction: row;
+    gap: 14px;
+}
+
+.petAvatar {
+    width: 54px;
+    height: 54px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #6366f1, #8b5cf6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    overflow: hidden;
+    box-shadow: 0 2px 6px rgba(99, 102, 241, 0.25);
+}
+
+.petAvatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.petAvatar span {
+    color: white;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 1;
+}
+
+.petInfo {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+    min-width: 0;
+}
+
+.petName {
+    font-size: 16px;
+    font-weight: 600;
+    color: #0f172a;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.petBreed {
+    font-size: 14px;
+    color: #64748b;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* === ПУСТОЕ СОСТОЯНИЕ === */
+
+.empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 0;
+    color: #94a3b8;
+    text-align: center;
+}
+
+.emptyIcon {
+    font-size: 32px;
+    margin-bottom: 8px;
+    opacity: 0.6;
+}
+
+.empty p {
+    font-size: 13px;
+    margin: 0;
+}
+
+.loading {
+    text-align: center;
+    color: #64748b;
+    font-size: 13px;
+    padding: 20px 0;
+}
+
+/* Адаптив для мобильных */
+@media (max-width: 640px) {
+    .petsList {
+        max-height: 160px;
+    }
+    .petItem {
+        padding: 8px 10px;
+    }
+    .petAvatar {
+        width: 32px;
+        height: 32px;
+    }
+}
+
+.cardOrders {
+    grid-column: span 2;
+    grid-row: span 1;
+}
+
+.cardMessages {
+    grid-column: span 1;
+    grid-row: span 1;
+}
+
+.cardFavorites {
+    grid-column: span 1;
+    grid-row: span 1;
+}
+
+.cardSettings {
+    grid-column: span 1;
+    grid-row: span 1;
+}

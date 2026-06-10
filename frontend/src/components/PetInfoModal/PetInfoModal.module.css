@@ -1,0 +1,208 @@
+.overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    opacity: 0;
+    animation: fadeIn 0.3s ease forwards;
+}
+.overlayClosing {
+    animation: fadeOut 0.3s ease forwards;
+}
+
+.backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.6);
+    backdrop-filter: blur(4px);
+}
+
+.modal {
+    position: relative;
+    background: #fff;
+    border-radius: 16px;
+    padding: 28px;
+    width: 100%;
+    max-width: 480px;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    transform: translateY(20px) scale(0.95);
+    opacity: 0;
+    animation: slideUp 0.3s ease forwards;
+}
+.modalClosing {
+    animation: slideDown 0.3s ease forwards;
+}
+
+.closeBtn {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: #f1f5f9;
+    border: none;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    font-size: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #64748b;
+    transition: all 0.2s;
+}
+.closeBtn:hover {
+    background: #e2e8f0;
+    color: #0f172a;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 24px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.avatarWrapper {
+    flex-shrink: 0;
+}
+.avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid white;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+.avatarPlaceholder {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #6366f1, #8b5cf6);
+    color: white;
+    font-size: 28px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.titleBlock {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+.name {
+    font-size: 24px;
+    font-weight: 700;
+    color: #0f172a;
+    margin: 0;
+}
+.type {
+    font-size: 14px;
+    color: #64748b;
+    font-weight: 500;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+.field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+.label {
+    font-size: 12px;
+    font-weight: 600;
+    color: #94a3b8;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+.value {
+    font-size: 15px;
+    color: #0f172a;
+    font-weight: 500;
+}
+.mono {
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    background: #f8fafc;
+    padding: 4px 8px;
+    border-radius: 6px;
+    display: inline-block;
+}
+.notes {
+    font-size: 15px;
+    color: #334155;
+    line-height: 1.5;
+    margin: 0;
+    white-space: pre-wrap;
+}
+
+.meta {
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px solid #e2e8f0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    font-size: 12px;
+    color: #94a3b8;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+@keyframes fadeOut {
+    to {
+        opacity: 0;
+    }
+}
+@keyframes slideUp {
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+@keyframes slideDown {
+    to {
+        opacity: 0;
+        transform: translateY(20px) scale(0.95);
+    }
+}
+
+@media (max-width: 640px) {
+    .overlay {
+        padding: 12px;
+        align-items: flex-end;
+    }
+    .modal {
+        max-height: 85vh;
+        border-radius: 20px 20px 0 0;
+        transform: translateY(100%);
+        animation: slideUpMobile 0.3s ease forwards;
+    }
+    .modalClosing {
+        animation: slideDownMobile 0.3s ease forwards;
+    }
+}
+@keyframes slideUpMobile {
+    to {
+        transform: translateY(0);
+    }
+}
+@keyframes slideDownMobile {
+    to {
+        transform: translateY(100%);
+    }
+}

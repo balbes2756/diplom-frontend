@@ -1,0 +1,74 @@
+.overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+.modal {
+    background: white;
+    padding: 20px;
+    border-radius: 16px;
+    width: 100%;
+    max-width: 600px;
+}
+.title {
+    margin: 0 0 20px;
+    font-size: 22px;
+}
+.field {
+    margin-bottom: 16px;
+}
+.field label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 500;
+    font-size: 14px;
+}
+.field input,
+.field select,
+.field textarea {
+    width: 100%;
+    padding: 5px 5px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    font-size: 14px;
+    background: none;
+    color: #000;
+}
+.errorInput {
+    border-color: #ef4444 !important;
+}
+.errorText {
+    color: #ef4444;
+    font-size: 12px;
+    margin-top: 4px;
+    display: block;
+}
+.actions {
+    display: flex;
+    gap: 12px;
+    justify-content: flex-end;
+    margin-top: 20px;
+}
+.actions button {
+    padding: 10px 20px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font-weight: 500;
+}
+.actions button:first-child {
+    background: #f1f5f9;
+    color: #334155;
+}
+.actions button:last-child {
+    background: #6366f1;
+    color: white;
+}
+.actions button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}

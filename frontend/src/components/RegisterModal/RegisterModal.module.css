@@ -1,0 +1,350 @@
+.registerPage {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    z-index: 1000;
+    animation: fadeIn 0.3s ease;
+}
+
+.registerPage.closing {
+    animation: fadeOut 0.4s ease forwards;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.registerModal {
+    background: white;
+    border-radius: 24px 24px 0 0;
+    padding: 40px;
+    width: 100%;
+    max-width: 600px;
+    position: relative;
+    box-shadow: 0 -10px 60px rgba(0, 0, 0, 0.3);
+    animation: slideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    max-height: 90vh;
+    overflow-y: auto;
+    z-index: 1001;
+}
+
+.registerModal.modalClosing {
+    animation: slideDown 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(100%);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateY(0);
+    }
+    to {
+        transform: translateY(100%);
+    }
+}
+
+.closeButton {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: none;
+    border: none;
+    font-size: 32px;
+    cursor: pointer;
+    color: #6b7280;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.closeButton:hover {
+    background: #f3f4f6;
+    color: #1f2937;
+}
+
+.stepIndicator {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 24px;
+}
+
+.step {
+    font-size: 14px;
+    font-weight: 600;
+    color: #d1d5db;
+    transition: color 0.3s ease;
+}
+
+.step.active {
+    color: #3b82f6;
+}
+
+.stepDivider {
+    font-size: 12px;
+    color: #d1d5db;
+}
+
+.title {
+    font-family: "Montserrat Alternates", cursive;
+    font-size: 36px;
+    font-weight: 700;
+    color: #1f2937;
+    margin: 0 0 16px 0;
+    text-align: center;
+}
+
+.subtitle {
+    font-size: 14px;
+    color: #6b7280;
+    line-height: 1.5;
+    text-align: center;
+    margin: 0 0 32px 0;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.form.animating {
+    opacity: 0;
+    transform: translateX(20px);
+    transition: all 0.3s ease;
+}
+
+.formGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.input {
+    padding: 14px 20px;
+    border: 2px solid #d1d5db;
+    border-radius: 12px;
+    font-size: 15px;
+    color: #1f2937;
+    background: white;
+    transition: all 0.3s ease;
+    outline: none;
+    font-family: inherit;
+}
+
+.input::placeholder {
+    color: #9ca3af;
+}
+
+.input:focus {
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
+}
+
+.input.inputError {
+    border-color: #ef4444;
+    background: #fef2f2;
+}
+
+.input:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    background: #f9fafb;
+}
+
+.passwordWrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.passwordWrapper .input {
+    flex: 1;
+    padding-right: 50px;
+}
+
+.passwordToggle {
+    position: absolute;
+    right: 12px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    padding: 4px;
+    opacity: 0.6;
+    transition: opacity 0.3s ease;
+}
+
+.passwordToggle:hover {
+    opacity: 1;
+}
+
+.errorMessage {
+    font-size: 13px;
+    color: #ef4444;
+}
+
+.buttonGroup {
+    display: flex;
+    gap: 12px;
+    margin-top: 8px;
+}
+
+.backButton {
+    flex: 1;
+    padding: 16px;
+    background: #f3f4f6;
+    color: #6b7280;
+    border: none;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.backButton:hover:not(:disabled) {
+    background: #e5e7eb;
+}
+
+.backButton:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.submitButton {
+    flex: 2;
+    padding: 16px;
+    background: #e5e7eb;
+    color: #6b7280;
+    border: none;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: not-allowed;
+    transition: all 0.3s ease;
+}
+
+.submitButton:not(:disabled) {
+    background: #3b82f6;
+    color: white;
+    cursor: pointer;
+}
+
+.submitButton:not(:disabled):hover {
+    background: #2563eb;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(59, 130, 246, 0.3);
+}
+
+.footer {
+    margin-top: 24px;
+    text-align: center;
+    padding-bottom: 20px;
+}
+
+.footerText {
+    font-size: 14px;
+    color: #6b7280;
+    margin: 0;
+}
+
+.link {
+    color: #3b82f6;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.link:hover {
+    color: #1e3a8a;
+    text-decoration: underline;
+}
+
+@media (max-width: 640px) {
+    .registerModal {
+        padding: 32px 24px;
+        border-radius: 20px 20px 0 0;
+    }
+
+    .title {
+        font-size: 32px;
+    }
+
+    .subtitle {
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 480px) {
+    .registerModal {
+        padding: 28px 20px;
+        border-radius: 16px 16px 0 0;
+    }
+
+    .title {
+        font-size: 28px;
+    }
+
+    .closeButton {
+        top: 16px;
+        right: 16px;
+        width: 36px;
+        height: 36px;
+        font-size: 28px;
+    }
+}
+
+.registerModal::-webkit-scrollbar {
+    width: 6px;
+}
+
+.registerModal::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 3px;
+}
+
+.registerModal::-webkit-scrollbar-thumb {
+    background: #d1d5db;
+    border-radius: 3px;
+}

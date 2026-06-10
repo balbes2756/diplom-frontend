@@ -1,0 +1,322 @@
+/* Основной контейнер страницы */
+.container {
+    width: 100%;
+    min-height: 100vh;
+    background: #bbddff;
+}
+
+/* Общие стили секций */
+.section {
+    padding: 40px 0;
+}
+
+.sectionContent {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Заголовок страницы */
+.title {
+    font-size: 36px;
+    font-weight: 700;
+    color: #1f2937;
+    margin-bottom: 12px;
+    text-align: center;
+}
+
+.description {
+    font-size: 18px;
+    color: #4b5563;
+    text-align: center;
+    margin: 0;
+    line-height: 1.5;
+}
+
+/* Секция с картой */
+.mapSection {
+    background: #ffffff;
+    padding: 30px 0 40px;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.mapWrapper {
+    width: 100%;
+    height: 600px;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    background: #e5e7eb; /* Фолбэк на случай долгой загрузки карты */
+}
+
+/* Заголовок списка объявлений */
+.sectionTitle {
+    font-size: 24px;
+    font-weight: 700;
+    color: #1f2937;
+    margin-bottom: 24px;
+    padding-left: 4px;
+}
+
+/* Сетка карточек */
+.petsGrid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+}
+
+/* Адаптивность */
+@media (max-width: 1024px) {
+    .petsGrid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .section {
+        padding: 30px 0;
+    }
+
+    .title {
+        font-size: 28px;
+    }
+
+    .description {
+        font-size: 16px;
+    }
+
+    .mapWrapper {
+        height: 450px;
+    }
+
+    .petsGrid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .sectionContent {
+        padding: 0 16px;
+    }
+
+    .title {
+        font-size: 24px;
+    }
+
+    .mapWrapper {
+        height: 350px;
+        border-radius: 12px;
+    }
+
+    .petsGrid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.mapHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.mapTitle {
+    font-weight: 700;
+    color: #1f2937;
+    margin: 0;
+}
+
+.addButton {
+    padding: 10px 20px;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.buttonsWrapper {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+}
+.lostButton {
+    background: #ef4444;
+}
+
+.findButton {
+    background: #10b981;
+}
+
+/* Состояние пустого списка */
+.emptyState {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 20px;
+    text-align: center;
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.emptyIcon {
+    font-size: 64px;
+    margin-bottom: 16px;
+    opacity: 0.6;
+}
+
+.emptyTitle {
+    font-size: 20px;
+    font-weight: 700;
+    color: #1f2937;
+    margin: 0 0 12px 0;
+}
+
+.emptyText {
+    font-size: 15px;
+    color: #6b7280;
+    margin: 0 0 24px 0;
+    max-width: 400px;
+    line-height: 1.5;
+}
+
+.emptyButton {
+    padding: 12px 24px;
+    background: #3b82f6;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.emptyButton:hover {
+    background: #2563eb;
+    transform: translateY(-2px);
+}
+
+/* Режим выбора на карте */
+.mapFullscreen {
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    width: 100vw !important;
+    height: 100vh !important;
+    z-index: 9999; /* Поверх модалки */
+    padding: 0 !important;
+    background: white;
+}
+
+.mapFullscreen .sectionContent {
+    padding: 0;
+    max-width: 100%;
+    height: 100%;
+}
+
+.mapFullscreen .mapWrapper {
+    height: 100% !important;
+    border-radius: 0;
+}
+
+/* Затемнение остального контента */
+.container.dimmed > *:not(.mapSection) {
+    opacity: 0.2;
+    pointer-events: none;
+    filter: blur(2px);
+    transition: all 0.3s ease;
+}
+
+/* Оверлей с инструкцией */
+.pickingOverlay {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.8);
+    padding: 12px 24px;
+    border-radius: 50px;
+    z-index: 10000;
+    color: white;
+}
+
+.pickingText {
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.cancelPickBtn {
+    background: #ef4444;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 13px;
+}
+
+.filtersBar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    background: white;
+    padding: 16px 20px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    margin-bottom: 24px;
+    align-items: flex-end;
+}
+
+.filterGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    flex: 1;
+    min-width: 140px;
+}
+
+.filterLabel {
+    font-size: 12px;
+    font-weight: 600;
+    color: #6b7280;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.filterSelect {
+    padding: 10px 12px;
+    border: 2px solid #e5e7eb;
+    border-radius: 8px;
+    background-color: white;
+    font-size: 14px;
+    color: #1f2937;
+    cursor: pointer;
+    transition: border-color 0.2s;
+    outline: none;
+}
+
+.filterSelect:focus {
+    border-color: #3b82f6;
+}
+
+@media (max-width: 640px) {
+    .filtersBar {
+        flex-direction: column;
+        gap: 12px;
+    }
+    .filterGroup {
+        width: 100%;
+    }
+}

@@ -1,0 +1,9 @@
+/* Минимальные стили для 2GIS popup, если они не подгрузились */
+.dg-popup {
+    border-radius: 8px !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+}
+.dg-popup__content {
+    padding: 12px !important;
+    font-family: system-ui, sans-serif !important;
+}

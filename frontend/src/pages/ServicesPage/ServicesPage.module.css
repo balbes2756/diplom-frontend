@@ -1,0 +1,186 @@
+.container {
+    width: 100%;
+    min-height: 100vh;
+    background: none;
+}
+
+.section {
+    padding: 40px 0;
+    border-bottom: 1px solid #e5e7eb;
+    background-color: rgba(255, 255, 255, 0.25);
+}
+
+.section:last-child {
+    border-bottom: none;
+}
+
+.sectionContent {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Заголовок */
+.title {
+    font-size: 36px;
+    font-weight: 700;
+    color: #1f2937;
+    margin-bottom: 12px;
+    text-align: center;
+}
+
+.description {
+    font-size: 18px;
+    color: #4b5563;
+    text-align: center;
+}
+
+/* Загрузка */
+.loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 400px;
+    font-size: 18px;
+    color: #6b7280;
+}
+
+/* Фильтры */
+.filtersSection {
+    border-radius: 12px;
+    padding: 24px;
+}
+
+.filtersContainer {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Поиск */
+.searchContainer {
+    display: flex;
+    align-items: center;
+    background-color: white;
+    border-radius: 50px;
+    padding: 8px 12px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.searchIcon {
+    font-size: 20px;
+    margin-right: 12px;
+    color: #9ca3af;
+    flex-shrink: 0;
+}
+
+.searchInput {
+    flex: 1;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    color: #1f2937;
+    padding: 10px;
+    background-color: transparent;
+}
+
+.searchInput::placeholder {
+    color: #9ca3af;
+}
+
+.searchButton {
+    background-color: #0ea5e9;
+    color: white;
+    border: none;
+    border-radius: 40px;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    white-space: nowrap;
+    margin-left: 12px;
+}
+
+.searchButton:hover {
+    background-color: #0284c7;
+}
+
+.searchButton:active {
+    transform: scale(0.98);
+}
+
+/* Фильтры */
+.filters {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+}
+
+.filterGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.filterLabel {
+    font-size: 14px;
+    font-weight: 600;
+    color: #4b5563;
+}
+
+.filterSelect {
+    padding: 10px 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    background-color: white;
+    font-size: 15px;
+    color: #1f2937;
+    cursor: pointer;
+}
+
+.filterSelect:focus {
+    outline: none;
+    border-color: #0ea5e9;
+    box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.1);
+}
+
+/* Сетка услуг */
+.servicesGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+/* Адаптивность */
+@media (max-width: 1024px) {
+    .filters {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .servicesGrid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .section {
+        padding: 30px 0;
+    }
+
+    .title {
+        font-size: 28px;
+    }
+
+    .description {
+        font-size: 16px;
+    }
+
+    .filters {
+        grid-template-columns: 1fr;
+    }
+
+    .servicesGrid {
+        grid-template-columns: 1fr;
+    }
+}

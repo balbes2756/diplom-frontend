@@ -1,0 +1,266 @@
+.loginPage {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    z-index: 1000;
+    animation: fadeIn 0.3s ease;
+}
+
+.loginPage.closing {
+    animation: fadeOut 0.4s ease forwards;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.loginModal {
+    background: white;
+    border-radius: 24px 24px 0 0;
+    padding: 40px;
+    width: 100%;
+    max-width: 600px;
+    position: relative;
+    box-shadow: 0 -10px 60px rgba(0, 0, 0, 0.3);
+    animation: slideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    max-height: 90vh;
+    overflow-y: auto;
+    z-index: 1001;
+}
+
+.loginModal.modalClosing {
+    animation: slideDown 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(100%);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateY(0);
+    }
+    to {
+        transform: translateY(100%);
+    }
+}
+
+.closeButton {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: none;
+    border: none;
+    font-size: 32px;
+    cursor: pointer;
+    color: #6b7280;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.closeButton:hover {
+    background: #f3f4f6;
+    color: #1f2937;
+}
+
+.title {
+    font-family: "Montserrat Alternates", cursive;
+    font-size: 36px;
+    font-weight: 700;
+    color: #1f2937;
+    margin: 0 0 16px 0;
+    text-align: center;
+}
+
+.subtitle {
+    font-size: 14px;
+    color: #6b7280;
+    line-height: 1.5;
+    text-align: center;
+    margin: 0 0 32px 0;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.formGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.input {
+    padding: 14px 20px;
+    border: 2px solid #d1d5db;
+    border-radius: 12px;
+    font-size: 15px;
+    color: #1f2937;
+    background: white;
+    transition: all 0.3s ease;
+    outline: none;
+    font-family: inherit;
+}
+
+.input::placeholder {
+    color: #9ca3af;
+}
+
+.input:focus {
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
+}
+
+.input.inputError {
+    border-color: #ef4444;
+    background: #fef2f2;
+}
+
+.errorMessage {
+    font-size: 13px;
+    color: #ef4444;
+}
+
+.passwordWrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.passwordWrapper .input {
+    flex: 1;
+    padding-right: 50px;
+}
+
+.passwordToggle {
+    position: absolute;
+    right: 12px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    padding: 4px;
+    opacity: 0.6;
+    transition: opacity 0.3s ease;
+}
+
+.passwordToggle:hover {
+    opacity: 1;
+}
+
+.submitButton {
+    padding: 16px;
+    background: #3b82f6;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 8px;
+}
+
+.submitButton:hover {
+    background: #2563eb;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(59, 130, 246, 0.3);
+}
+
+.footer {
+    margin-top: 24px;
+    text-align: center;
+    padding-bottom: 20px;
+}
+
+.footerText {
+    font-size: 14px;
+    color: #6b7280;
+    margin: 0;
+}
+
+.link {
+    color: #3b82f6;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.link:hover {
+    color: #1e3a8a;
+    text-decoration: underline;
+}
+
+@media (max-width: 640px) {
+    .loginModal {
+        padding: 32px 24px;
+        border-radius: 20px 20px 0 0;
+    }
+
+    .title {
+        font-size: 32px;
+    }
+
+    .subtitle {
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 480px) {
+    .loginModal {
+        padding: 28px 20px;
+        border-radius: 16px 16px 0 0;
+    }
+
+    .title {
+        font-size: 28px;
+    }
+
+    .closeButton {
+        top: 16px;
+        right: 16px;
+        width: 36px;
+        height: 36px;
+        font-size: 28px;
+    }
+}

@@ -1,0 +1,53 @@
+/* Базовые стили кнопки */
+.button {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-align: center; /* Центрируем текст */
+    display: inline-flex; /* Используем flex для лучшего центрирования */
+    justify-content: center; /* Центрируем по горизонтали */
+    align-items: center; /* Центрируем по вертикали */
+    gap: 8px; /* Отступ между иконками и текстом, если будут */
+    line-height: 1.5; /* Нормализуем высоту строки */
+    white-space: nowrap; /* Текст не переносится на новую строку */
+    color: inherit;
+}
+
+/* На мобильных устройствах — кнопка на всю ширину */
+@media (max-width: 768px) {
+    .button {
+        width: 100%;
+        padding: 14px 20px;
+        font-size: 18px;
+    }
+}
+
+/* Состояние при наведении */
+.button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Primary вариант */
+.primary {
+    background-color: #0ea5e9;
+    color: white;
+}
+
+.primary:hover {
+    background-color: #0284c7;
+}
+
+/* Secondary вариант */
+.secondary {
+    background-color: #f3f4f6;
+    color: #374151;
+}
+
+.secondary:hover {
+    background-color: #e5e7eb;
+}

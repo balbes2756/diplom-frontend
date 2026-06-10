@@ -1,0 +1,365 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@400;600;700&subset=cyrillic,cyrillic-ext&display=swap");
+
+.layout {
+    max-width: 1920px;
+    min-height: 100vh;
+    background-image: url("/src/assets/images/back.png");
+    background-repeat: no-repeat;
+    background-size: 100%;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+}
+
+.header {
+    position: sticky;
+    top: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    width: 500px;
+    height: 50px;
+    padding: 5px 24px;
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 50px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    margin-bottom: 40px;
+}
+
+.headerContent {
+    display: flex;
+    align-items: center;
+    /* justify-content: space-between; */
+    gap: 25px;
+}
+
+.home {
+    text-decoration: none;
+}
+
+.logo {
+    font-family: "Montserrat Alternates", sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    color: white;
+    line-height: 1.2;
+    text-align: right;
+    width: 120px;
+}
+
+.nav {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.navIcon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80px;
+    height: 50px;
+    border-radius: 25px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.navIcon:hover {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.navIcon.active {
+    background: rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: inherit;
+    min-height: 100vh;
+}
+
+.footer {
+    background: linear-gradient(
+        0180deg,
+        #3876ff 0%,
+        #5e8ffc 25%,
+        #84a8f9 50%,
+        #a9c1f5 75%,
+        #cfdaf2 100%
+    );
+    padding: 60px 40px 40px;
+    position: relative;
+    overflow: hidden;
+    border-top-left-radius: 60px;
+    border-top-right-radius: 60px;
+}
+
+.footerContent {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+}
+
+.footerLeft {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    font-size: 16px;
+}
+
+.footerTitle {
+    font-size: 3em;
+    font-weight: 700;
+    color: white;
+    margin: 0;
+    width: 600px;
+}
+
+.contactForm {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.formInput {
+    padding: 10px 0px;
+    border: none;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.5);
+    background: transparent;
+    color: white;
+    font-size: 1.5em;
+    outline: none;
+    transition: all 0.3s ease;
+    width: 700px;
+}
+
+.formInput::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.formInput:focus {
+    border-bottom-color: white;
+}
+
+.submitButton {
+    /* padding: 14px 32px; */
+    background: white;
+    color: #5c5c5c;
+    border: none;
+    border-radius: 50px;
+    font-size: 1.25em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 200px;
+    height: 50px;
+}
+
+.submitButton:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.footerInfo {
+    display: flex;
+    gap: 40px;
+    background: rgb(255, 255, 255);
+    padding: 20px 20px;
+    border-top-right-radius: 40px;
+    border-bottom-right-radius: 40px;
+    backdrop-filter: blur(10px);
+    position: relative;
+    left: -40px;
+    width: 700px;
+}
+
+.infoItem {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    margin-left: 40px;
+}
+
+.infoIcon {
+    font-size: 20px;
+}
+
+.infoLabel {
+    font-size: 14px;
+    font-weight: 600;
+    color: rgb(0, 0, 0);
+    margin-bottom: 4px;
+}
+
+.infoText {
+    font-size: 14px;
+    color: rgb(0, 0, 0);
+}
+
+.footerNote {
+    font-size: 1em;
+    color: black;
+    margin: 0;
+    padding-top: 16px;
+}
+
+.footerRight {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.footerContactText {
+    font-size: 1.5em;
+    color: rgba(255, 255, 255, 0.9);
+    margin: 0 0 24px 0;
+    text-align: left;
+    line-height: 1.5;
+    width: 600px;
+}
+
+.footerContacts {
+    display: flex;
+    flex-direction: row;
+    gap: 32px;
+    margin-bottom: 40px;
+}
+
+.contactLink {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: white;
+    text-decoration: none;
+    font-size: 1.5em;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    padding: 12px 20px;
+    border-radius: 12px;
+}
+
+.contactIcon {
+    display: flex;
+    background-color: #e5e7ff;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+}
+
+.heartDecoration {
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+}
+
+.pawsDecoration {
+    position: absolute;
+    right: 0;
+    bottom: -100px;
+    transform: rotate(-45deg);
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .headerContent {
+        flex-direction: column;
+        gap: 16px;
+        height: auto;
+        padding: 16px 20px;
+    }
+
+    .nav {
+        margin-left: 0;
+        width: 100%;
+        justify-content: center;
+        gap: 16px;
+    }
+
+    .authButtons {
+        width: 100%;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .authLink {
+        text-align: center;
+    }
+
+    .main {
+        padding: 20px;
+    }
+}
+
+/* Аватар пользователя */
+.avatarIcon {
+    padding: 0;
+    overflow: hidden;
+}
+
+.userAvatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #3b82f6;
+    transition:
+        transform 0.3s ease,
+        border-color 0.3s ease;
+}
+
+.avatarIcon:hover .userAvatar {
+    transform: scale(1.1);
+    border-color: #2563eb;
+}
+
+/* Плейсхолдер аватара (первая буква имени) */
+.avatarPlaceholder {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    font-weight: 700;
+    transition: transform 0.3s ease;
+}
+
+.avatarIcon:hover .avatarPlaceholder {
+    transform: scale(1.1);
+}
+
+/* Кнопка выхода */
+.logoutButton {
+    background: rgba(239, 68, 68, 0.1);
+    color: #ef4444;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 20px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logoutButton:hover {
+    background: rgba(239, 68, 68, 0.2);
+    transform: scale(1.1);
+}
+
+.logoutButton:active {
+    transform: scale(0.95);
+}
