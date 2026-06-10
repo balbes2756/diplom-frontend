@@ -26,7 +26,7 @@ interface Props {
 
 function CreateArticleModal({ isOpen, onClose }: Props) {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const [isClosing, setIsClosing] = useState(false);
+    const [isClosing, _setIsClosing] = useState(false);
     const { createArticle, isLoading } = useArticleStore();
     const { addToast } = useToastStore();
 

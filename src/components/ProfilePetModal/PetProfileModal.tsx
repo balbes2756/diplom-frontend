@@ -15,6 +15,7 @@ interface PetProfileModalProps {
     onClose: () => void;
     onSubmit?: (formData: PetProfileForm) => Promise<void>; // ← ДОБАВЬ если нужно
     initialData?: Partial<PetProfileForm>;
+    isSubmitting?: boolean;
 }
 
 function PetProfileModal({ isOpen, pet, onClose }: PetProfileModalProps) {

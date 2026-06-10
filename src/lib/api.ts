@@ -14,7 +14,7 @@ async function request<T>(url: string, options: RequestInit = {}): Promise<T> {
     // Если это НЕ FormData и заголовок не передан явно — добавляем JSON
     if (
         !(options.body instanceof FormData) &&
-        !options.headers?.["Content-Type"]
+        !(options.headers as Record<string, string>)?.["Content-Type"]
     ) {
         (headers as Record<string, string>)["Content-Type"] =
             "application/json";
