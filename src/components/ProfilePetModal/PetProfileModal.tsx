@@ -16,9 +16,18 @@ interface PetProfileModalProps {
     onSubmit?: (formData: PetProfileForm) => Promise<void>; // ← ДОБАВЬ если нужно
     initialData?: Partial<PetProfileForm>;
     isSubmitting?: boolean;
+    error?: string | null;
 }
 
-function PetProfileModal({ isOpen, pet, onClose }: PetProfileModalProps) {
+function PetProfileModal({
+    isOpen,
+    pet,
+    onClose,
+    onSubmit,
+    initialData,
+    isSubmitting = false,
+    error = null,
+}: PetProfileModalProps) {
     const addPetProfile = usePetStore((state) => state.addPetProfile);
     const updatePetProfile = usePetStore((state) => state.updatePetProfile);
 
