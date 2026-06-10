@@ -1,8 +1,8 @@
 import styles from "./HomePage.module.css";
-import heartImage from "/DIPLOM/frontend/src/assets/images/heart.png";
-import pawImage from "/DIPLOM/frontend/src/assets/images/paws.png";
-import authorImage from "/DIPLOM/frontend/src/assets/images/cute.jpg";
-import dogImage from "/DIPLOM/frontend/src/assets/images/dog.png";
+import heartImage from "../../assets/images/heart.png";
+import pawImage from "../../assets/images/paws.png";
+import authorImage from "../../assets/images/cute.jpg";
+import dogImage from "../../assets/images/dog.png";
 
 function HomePage() {
     return (

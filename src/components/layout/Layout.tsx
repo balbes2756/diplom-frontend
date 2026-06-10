@@ -1,6 +1,6 @@
 import { Outlet, Link, useLocation, useNavigate } from "react-router-dom";
 import styles from "./Layout.module.css";
-import Paws from "/DIPLOM/frontend/src/assets/images/footerPaws.png";
+import Paws from "../../assets/images/footerPaws.png";
 import RegisterModal from "../RegisterModal/RegisterModal";
 import { useModalStore } from "../../store/useModalStore";
 import LoginModal from "../LoginModal/LoginModal";
