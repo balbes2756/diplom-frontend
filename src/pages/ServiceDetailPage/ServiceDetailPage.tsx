@@ -1,9 +1,9 @@
 import { useState } from "react";
-import { useParams } from "react-router-dom";
+// import { useParams } from "react-router-dom";
 import styles from "./ServiceDetailPage.module.css";
 
 function ServiceDetailPage() {
-    const { id } = useParams();
+    // const { id: _id } = useParams();
     const [activeTab, setActiveTab] = useState<
         "about" | "services" | "reviews"
     >("about");

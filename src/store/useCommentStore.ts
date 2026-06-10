@@ -55,7 +55,7 @@ export const useCommentStore = create<CommentState>((set, get) => ({
         }
     },
 
-    editComment: async (articleId, commentId, text) => {
+    editComment: async (_articleId, commentId, text) => {
         try {
             await api.patch<Comment>(`/articles/comments/${commentId}`, {
                 text,
@@ -71,7 +71,7 @@ export const useCommentStore = create<CommentState>((set, get) => ({
         }
     },
 
-    deleteComment: async (articleId, commentId) => {
+    deleteComment: async (_articleId, commentId) => {
         try {
             await api.delete(`/articles/comments/${commentId}`);
             set((state) => ({

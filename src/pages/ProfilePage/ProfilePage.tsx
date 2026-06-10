@@ -31,10 +31,10 @@ function ProfilePage() {
         navigate("/");
     };
 
-    const handleAddPet = async (formData: PetProfileForm) => {
-        console.log("✅ Данные питомца:", formData);
-        await addPetProfile(formData);
-    };
+    // const handleAddPet = async (formData: PetProfileForm) => {
+    //     console.log("✅ Данные питомца:", formData);
+    //     await addPetProfile(formData);
+    // };
 
     const handleEditPet = (pet: PetProfile) => {
         setEditingPet(pet);

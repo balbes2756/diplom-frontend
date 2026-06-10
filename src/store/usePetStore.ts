@@ -17,24 +17,27 @@ const toBackendFormat = (form: PetProfileForm) => ({
 });
 
 interface PetState {
-    // === ОБЪЯВЛЕНИЯ НА КАРТЕ (твоё существующее) ===
+    // === ОБЪЯВЛЕНИЯ О ПРОПАЖЕ (LostPet) ===
     pets: LostPet[];
     addPet: (pet: Omit<LostPet, "id">) => void;
     removePet: (id: number) => void;
     updatePet: (id: number, updates: Partial<LostPet>) => void;
 
-    // === ПРОФИЛИ ПИТОМЦЕВ (новое) ===
+    // === ПРОФИЛИ ПИТОМЦЕВ (PetProfile) ===
     petProfiles: PetProfile[];
     isProfilesLoading: boolean;
     profilesError: string | null;
     fetchMyPets: () => Promise<void>;
     addPetProfile: (formData: PetProfileForm) => Promise<void>;
+    updatePetProfile: (id: number, formData: PetProfileForm) => Promise<void>;
+    deletePetProfile: (id: number) => Promise<void>;
 }
 
 export const usePetStore = create<PetState>()(
     persist(
         (set) => ({
-            pets: [], // ← Начинаем с пустого массива
+            // === ОБЪЯВЛЕНИЯ О ПРОПАЖЕ ===
+            pets: [],
 
             addPet: (pet) =>
                 set((state) => ({
@@ -83,15 +86,11 @@ export const usePetStore = create<PetState>()(
             addPetProfile: async (formData: PetProfileForm) => {
                 set({ isProfilesLoading: true, profilesError: null });
                 try {
-                    // Конвертируем camelCase → snake_case для бэкенда
                     const payload = toBackendFormat(formData);
-
                     const newProfile = await api.post<PetProfile>(
                         "/pets/profile",
                         payload,
                     );
-
-                    // Добавляем в начало списка
                     set((state) => ({
                         petProfiles: [newProfile, ...state.petProfiles],
                         isProfilesLoading: false,
@@ -101,14 +100,15 @@ export const usePetStore = create<PetState>()(
                         profilesError: err.message,
                         isProfilesLoading: false,
                     });
-                    throw err; // Пробрасываем, чтобы модалка увидела ошибку
+                    throw err;
                 }
             },
 
-            updatePetProfile: async (id: number, data: PetProfileForm) => {
+            // ✅ Обновление профиля (асинхронное, с API)
+            updatePetProfile: async (id: number, formData: PetProfileForm) => {
                 set({ isProfilesLoading: true, profilesError: null });
                 try {
-                    const payload = toBackendFormat(data);
+                    const payload = toBackendFormat(formData);
                     const updated = await api.patch<PetProfile>(
                         `/pets/profile/${id}`,
                         payload,
@@ -128,6 +128,7 @@ export const usePetStore = create<PetState>()(
                 }
             },
 
+            // ✅ Удаление профиля (асинхронное, с API)
             deletePetProfile: async (id: number) => {
                 set({ isProfilesLoading: true, profilesError: null });
                 try {

@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
@@ -25,7 +25,7 @@ interface Props {
 }
 
 function CreateArticleModal({ isOpen, onClose }: Props) {
-    const [isClosing, setIsClosing] = useState(false);
+    // const [, setIsClosing] = useState(false);
     const { createArticle, isLoading } = useArticleStore();
     const { addToast } = useToastStore();
 
@@ -54,7 +54,12 @@ function CreateArticleModal({ isOpen, onClose }: Props) {
 
     const onSubmit = async (data: FormValues) => {
         try {
-            await createArticle(data);
+            await createArticle({
+                title: data.title,
+                content: data.content,
+                category: data.category,
+                image_url: data.image_url || "",
+            });
             addToast({ message: "Статья опубликована!", type: "success" });
             onClose();
         } catch {

@@ -1,8 +1,8 @@
 import type { PetCardProps } from "../../types/pet";
 import styles from "./LostPetCard.module.css";
-import Cat from "/DIPLOM/frontend/src/assets/images/Cat.svg";
-import Dog from "/DIPLOM/frontend/src/assets/images/Dog.svg";
-import Other from "/DIPLOM/frontend/src/assets/images/Other.svg";
+import Cat from "@/assets/images/Cat.svg";
+import Dog from "@/assets/images/Dog.svg";
+import Other from "@/assets/images/Other.svg";
 
 interface LostPetCardProps extends PetCardProps {
     currentUserId?: number | null; // ← ДОБАВЬ

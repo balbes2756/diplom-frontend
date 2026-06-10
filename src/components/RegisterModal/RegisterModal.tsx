@@ -34,7 +34,7 @@ function RegisterModal() {
     // ← Получаем весь store целиком
     const authStore = useAuthStore();
     const registerAuth = authStore.register;
-    const isAuthLoading = authStore.isLoading;
+    // const isAuthLoading = useAuthStore();
 
     const [isClosing, setIsClosing] = useState(false);
     const [isVisible, setIsVisible] = useState(false);

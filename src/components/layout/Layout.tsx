@@ -12,10 +12,10 @@ function Layout() {
     const navigate = useNavigate();
 
     // Модалки
-    const { openRegister, openLogin } = useModalStore();
+    const { openLogin } = useModalStore(); //openRegister: _openRegister,
 
     // Аутентификация
-    const { isAuthenticated, user, logout } = useAuthStore();
+    const { isAuthenticated, user } = useAuthStore(); //, logout
 
     const handleProfileClick = (e: React.MouseEvent) => {
         e.preventDefault();
@@ -30,10 +30,10 @@ function Layout() {
     };
 
     // Обработчик выхода
-    const handleLogout = () => {
-        logout();
-        navigate("/");
-    };
+    // const _handleLogout = () => {
+    //     logout();
+    //     navigate("/");
+    // };
 
     useEffect(() => {
         window.scrollTo(0, 0);

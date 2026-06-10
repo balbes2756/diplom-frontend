@@ -16,7 +16,8 @@ async function request<T>(url: string, options: RequestInit = {}): Promise<T> {
         !(options.body instanceof FormData) &&
         !options.headers?.["Content-Type"]
     ) {
-        headers["Content-Type"] = "application/json";
+        (headers as Record<string, string>)["Content-Type"] =
+            "application/json";
     }
 
     const res = await fetch(`${API_URL}${url}`, { ...options, headers });

@@ -43,7 +43,7 @@ function AddPetModal({
         handleSubmit,
         formState: { errors },
         reset,
-        setValue,
+        setValue: _setValue,
     } = useForm<PetForm>({
         resolver: zodResolver(petSchema),
         defaultValues: {

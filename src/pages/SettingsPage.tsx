@@ -43,7 +43,7 @@ function SettingsPage() {
     });
 
     const avatarValue = watch("avatar");
-    const nameValue = watch("name");
+    // const nameValue = watch("name");
     const phoneValue = watch("phone");
 
     const handleRemoveAvatar = () => {

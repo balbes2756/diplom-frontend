@@ -2,7 +2,7 @@ import { z } from "zod";
 
 export const petProfileSchema = z.object({
     name: z.string().min(1, "Введите кличку питомца"),
-    type: z.enum(["dog", "cat", "other"], { required_error: "Выберите тип" }),
+    type: z.enum(["dog", "cat", "other"], { message: "Выберите тип" }),
     breed: z.string().optional(),
     birthDate: z.string().optional(), // формат YYYY-MM-DD
     color: z.string().optional(),

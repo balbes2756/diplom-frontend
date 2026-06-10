@@ -17,12 +17,12 @@ function LoginModal() {
         openRegister,
     } = useModalStore();
 
-    const { login, isLoading } = useAuthStore();
+    const { login, isLoading: _isLoading } = useAuthStore();
 
     const [isClosing, setIsClosing] = useState(false);
     const [isVisible, setIsVisible] = useState(false);
     const [showPassword, setShowPassword] = useState(false);
-    const [error, setError] = useState<string | null>(null);
+    const [, setError] = useState<string | null>(null);
 
     const {
         register,
