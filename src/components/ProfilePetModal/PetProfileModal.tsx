@@ -13,7 +13,7 @@ interface PetProfileModalProps {
     isOpen?: boolean;
     pet?: PetProfile | null;
     onClose: () => void;
-    onSubmit?: (formData: PetProfileForm) => Promise<void>; // ← ДОБАВЬ если нужно
+    onFormSubmit?: (formData: PetProfileForm) => Promise<void>; // ← ПЕРЕИМЕНОВАНО
     initialData?: Partial<PetProfileForm>;
     isSubmitting?: boolean;
     error?: string | null;
@@ -23,10 +23,10 @@ function PetProfileModal({
     isOpen,
     pet,
     onClose,
-    onSubmit,
-    initialData,
-    isSubmitting = false,
-    error = null,
+    onFormSubmit, // ← ПЕРЕИМЕНОВАНО
+    initialData: _initialData, // ← Подчёркивание для неиспользуемой
+    isSubmitting: _isSubmitting, // ← Подчёркивание
+    error: _error, // ← Подчёркивание
 }: PetProfileModalProps) {
     const addPetProfile = usePetStore((state) => state.addPetProfile);
     const updatePetProfile = usePetStore((state) => state.updatePetProfile);
@@ -76,9 +76,13 @@ function PetProfileModal({
         }
     }, [pet, reset]);
 
-    const onSubmit = async (data: PetProfileForm) => {
+    // ✅ Внутренняя функция обработки формы
+    const handleFormSubmit = async (data: PetProfileForm) => {
         try {
-            if (pet) {
+            if (onFormSubmit) {
+                // Если передан внешний обработчик — используем его
+                await onFormSubmit(data);
+            } else if (pet) {
                 await updatePetProfile(pet.id, data);
             } else {
                 await addPetProfile(data);
@@ -98,7 +102,7 @@ function PetProfileModal({
                     {pet ? "Редактировать профиль" : "Новый профиль питомца"}
                 </h2>
 
-                <form onSubmit={handleSubmit(onSubmit)}>
+                <form onSubmit={handleSubmit(handleFormSubmit)}>
                     <div className={styles.formGroup}>
                         <label>Имя</label>
                         <input
@@ -170,9 +174,14 @@ function PetProfileModal({
                         />
                     </div>
 
+                    {_error && <div className={styles.error}>{_error}</div>}
+
                     <div className={styles.buttons}>
-                        <button type="submit" className={styles.submitBtn}>
-                            Сохранить
+                        <button
+                            type="submit"
+                            className={styles.submitBtn}
+                            disabled={_isSubmitting}>
+                            {_isSubmitting ? "Сохранение..." : "Сохранить"}
                         </button>
                         <button
                             type="button"
