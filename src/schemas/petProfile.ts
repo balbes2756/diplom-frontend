@@ -12,7 +12,7 @@ export const petProfileSchema = z.object({
         .optional()
         .or(z.literal("")),
     notes: z.string().optional(),
-    isChipped: z.boolean().default(false),
+    isChipped: z.boolean(),
 });
 
 export type PetProfileForm = z.infer<typeof petProfileSchema>;
