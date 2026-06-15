@@ -32,7 +32,6 @@
 .headerContent {
     display: flex;
     align-items: center;
-    /* justify-content: space-between; */
     gap: 25px;
 }
 
@@ -48,6 +47,10 @@
     line-height: 1.2;
     text-align: right;
     width: 120px;
+}
+
+.burgerButton {
+    display: none;
 }
 
 .nav {
@@ -94,7 +97,7 @@
         #a9c1f5 75%,
         #cfdaf2 100%
     );
-    padding: 60px 40px 40px;
+    padding: 60px 80px 40px;
     position: relative;
     overflow: hidden;
     border-top-left-radius: 60px;
@@ -149,7 +152,6 @@
 }
 
 .submitButton {
-    /* padding: 14px 32px; */
     background: white;
     color: #5c5c5c;
     border: none;
@@ -212,12 +214,13 @@
 
 .footerRight {
     display: flex;
-    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     gap: 40px;
 }
 
 .footerContactText {
-    font-size: 1.5em;
+    font-size: 1.7em;
     color: rgba(255, 255, 255, 0.9);
     margin: 0 0 24px 0;
     text-align: left;
@@ -238,7 +241,7 @@
     gap: 12px;
     color: white;
     text-decoration: none;
-    font-size: 1.5em;
+    font-size: 2em;
     font-weight: 500;
     transition: all 0.3s ease;
     padding: 12px 20px;
@@ -248,15 +251,14 @@
 .contactIcon {
     display: flex;
     background-color: #e5e7ff;
-    width: 45px;
-    height: 45px;
+    width: 65px;
+    height: 65px;
     border-radius: 50%;
     align-items: center;
     justify-content: center;
 }
 
 .heartDecoration {
-    position: absolute;
     left: 50%;
     bottom: 0;
 }
@@ -268,38 +270,6 @@
     transform: rotate(-45deg);
 }
 
-/* Адаптивность */
-@media (max-width: 768px) {
-    .headerContent {
-        flex-direction: column;
-        gap: 16px;
-        height: auto;
-        padding: 16px 20px;
-    }
-
-    .nav {
-        margin-left: 0;
-        width: 100%;
-        justify-content: center;
-        gap: 16px;
-    }
-
-    .authButtons {
-        width: 100%;
-        flex-direction: column;
-        gap: 8px;
-    }
-
-    .authLink {
-        text-align: center;
-    }
-
-    .main {
-        padding: 20px;
-    }
-}
-
-/* Аватар пользователя */
 .avatarIcon {
     padding: 0;
     overflow: hidden;
@@ -321,7 +291,6 @@
     border-color: #2563eb;
 }
 
-/* Плейсхолдер аватара (первая буква имени) */
 .avatarPlaceholder {
     width: 40px;
     height: 40px;
@@ -340,7 +309,6 @@
     transform: scale(1.1);
 }
 
-/* Кнопка выхода */
 .logoutButton {
     background: rgba(239, 68, 68, 0.1);
     color: #ef4444;
@@ -362,4 +330,319 @@
 
 .logoutButton:active {
     transform: scale(0.95);
+}
+
+/* ===== МОБИЛЬНЫЕ УСТРОЙСТВА (≤768px) ===== */
+
+@media (max-width: 768px) {
+    .layout {
+        background-size: cover;
+        background-position: center;
+    }
+
+    /* Хэдер по центру */
+    .header {
+        position: relative;
+        width: calc(100% - 140px);
+        max-width: 400px;
+        top: 10px;
+        left: 50%;
+        padding: 5px 16px;
+        margin-bottom: 20px;
+        align-items: center;
+        display: flex;
+    }
+
+    .headerContent {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        gap: 16px;
+    }
+
+    /* Логотип слева */
+    .logo {
+        font-size: 22px;
+        width: auto;
+        text-align: left;
+        white-space: nowrap;
+    }
+
+    /* Скрываем обычную навигацию */
+    .nav {
+        display: none;
+    }
+
+    /* Кнопка бургер-меню */
+    .burgerButton {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 40px;
+        height: 40px;
+        background: rgba(255, 255, 255, 0);
+        border: none;
+        border-radius: 10px;
+
+        padding: 0;
+        gap: 5px;
+        transition: all 0.3s ease;
+        flex-shrink: 0;
+    }
+
+    .burgerButton:hover {
+        background: rgba(255, 255, 255, 0.2);
+    }
+
+    .burgerButton span {
+        display: block;
+        width: 24px;
+        height: 3px;
+        background: white;
+        border-radius: 2px;
+        transition: all 0.3s ease;
+    }
+
+    /* Анимация бургера при открытии */
+    .burgerButton.active span:nth-child(1) {
+        transform: rotate(45deg) translate(6px, 6px);
+    }
+
+    .burgerButton.active span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .burgerButton.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(6px, -6px);
+    }
+
+    /* Выпадающее меню */
+    .mobileMenu {
+        position: fixed;
+        top: 70px;
+        left: 10px;
+        right: 10px;
+        background: rgba(0, 0, 0, 0.95);
+        backdrop-filter: blur(20px);
+        border-radius: 20px;
+        padding: 20px;
+        z-index: 100;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        animation: slideDown 0.3s ease;
+    }
+
+    @keyframes slideDown {
+        from {
+            opacity: 0;
+            transform: translateY(-20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .mobileMenuLink {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 16px 20px;
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 12px;
+        color: white;
+        text-decoration: none;
+        font-size: 16px;
+        font-weight: 500;
+        transition: all 0.3s ease;
+    }
+
+    .mobileMenuLink:hover {
+        background: rgba(255, 255, 255, 0.15);
+        transform: translateX(8px);
+    }
+
+    .mobileMenuLink.active {
+        background: rgba(255, 255, 255, 0.2);
+        border-left: 4px solid #3b82f6;
+    }
+
+    .mobileMenuLink svg {
+        width: 24px;
+        height: 24px;
+        flex-shrink: 0;
+    }
+
+    /* Затемнение фона */
+    .menuOverlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 99;
+        animation: fadeIn 0.3s ease;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+
+    /* Аватар в меню */
+    .mobileMenuAvatar {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 16px 20px;
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 12px;
+        margin-bottom: 12px;
+    }
+
+    .mobileMenuAvatar .userAvatar,
+    .mobileMenuAvatar .avatarPlaceholder {
+        width: 40px;
+        height: 40px;
+    }
+
+    .mobileMenuAvatar span {
+        color: white;
+        font-size: 16px;
+        font-weight: 600;
+    }
+
+    .navIcon {
+        width: 45px;
+        height: 40px;
+        border-radius: 20px;
+    }
+
+    .navIcon svg {
+        width: 24px;
+        height: 24px;
+    }
+
+    .footer {
+        padding: 40px 20px 30px;
+        border-top-left-radius: 30px;
+        border-top-right-radius: 30px;
+    }
+
+    .footerContent {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .footerLeft {
+        gap: 24px;
+        font-size: 14px;
+    }
+
+    .footerTitle {
+        font-size: 1.8em;
+        width: 100%;
+    }
+
+    .contactForm {
+        gap: 16px;
+    }
+
+    .formInput {
+        font-size: 1em;
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .submitButton {
+        font-size: 1em;
+        width: 100%;
+        max-width: 200px;
+        height: 45px;
+    }
+
+    .footerInfo {
+        flex-direction: column;
+        gap: 16px;
+        width: 100%;
+        max-width: 100%;
+        left: 0;
+        border-radius: 20px;
+        padding: 20px;
+    }
+
+    .infoItem {
+        gap: 16px;
+        margin-left: 0;
+    }
+
+    .infoLabel {
+        font-size: 13px;
+    }
+
+    .infoText {
+        font-size: 13px;
+    }
+
+    .footerNote {
+        font-size: 0.9em;
+        line-height: 1.5;
+    }
+
+    .footerRight {
+        gap: 24px;
+    }
+
+    .footerContactText {
+        font-size: 1.1em;
+        width: 100%;
+        margin: 0;
+    }
+
+    .footerContacts {
+        flex-direction: column;
+        gap: 16px;
+        margin-bottom: 0;
+    }
+
+    .contactLink {
+        font-size: 1.1em;
+        padding: 12px 16px;
+        background: rgba(255, 255, 255, 0.1);
+    }
+
+    .contactLink:hover {
+        background: rgba(255, 255, 255, 0.2);
+    }
+
+    .contactIcon {
+        width: 40px;
+        height: 40px;
+        flex-shrink: 0;
+    }
+
+    .contactIcon svg {
+        width: 20px;
+        height: 20px;
+    }
+
+    /* Скрываем декоративные элементы на мобильных */
+    .heartDecoration {
+        display: none;
+    }
+
+    .userAvatar,
+    .avatarPlaceholder {
+        width: 36px;
+        height: 36px;
+        font-size: 16px;
+    }
 }
