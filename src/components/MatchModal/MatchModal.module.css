@@ -1,0 +1,276 @@
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(6px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+    padding: 20px;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.modal {
+    background: white;
+    border-radius: 24px;
+    width: 100%;
+    max-width: 1100px;
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    padding: 40px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    animation: slideUp 0.4s ease;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.closeButton {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: none;
+    background: #f3f4f6;
+    color: #374151;
+    font-size: 24px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.closeButton:hover {
+    background: #e5e7eb;
+    transform: rotate(90deg);
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 32px;
+}
+
+.title {
+    font-size: 28px;
+    font-weight: 700;
+    color: #1f2937;
+    margin: 0 0 12px 0;
+}
+
+.subtitle {
+    font-size: 15px;
+    color: #6b7280;
+    line-height: 1.5;
+    margin: 0;
+}
+
+.content {
+    flex: 1;
+    overflow-y: auto;
+    margin: 0 -8px;
+    padding: 0 8px;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    padding-bottom: 8px;
+}
+
+/* Обёртка карточки — задаём фиксированные размеры */
+.cardWrapper {
+    width: 100%;
+    min-height: 420px;
+}
+
+/* Переопределяем стили LostPetCard внутри модалки */
+.cardWrapper :global(.card) {
+    width: 100% !important;
+    height: 100% !important;
+    min-height: 420px !important;
+    display: flex !important;
+    flex-direction: column !important;
+}
+
+.cardWrapper :global(.cardImageWrapper) {
+    height: 220px !important;
+    min-height: 220px !important;
+    width: 100% !important;
+}
+
+.cardWrapper :global(.cardImage) {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+}
+
+.cardWrapper :global(.imagePlaceholder) {
+    height: 220px !important;
+    min-height: 220px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    background: #f3f4f6 !important;
+    width: 100% !important;
+}
+
+.cardWrapper :global(.cardContent) {
+    flex: 1 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    padding: 16px !important;
+}
+
+.cardWrapper :global(.cardName) {
+    font-size: 18px !important;
+    font-weight: 700 !important;
+    margin: 0 0 8px 0 !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+}
+
+.cardWrapper :global(.cardDescription) {
+    font-size: 14px !important;
+    line-height: 1.5 !important;
+    color: #4b5563 !important;
+    margin: 0 0 12px 0 !important;
+    flex: 1 !important;
+    overflow: hidden !important;
+    display: -webkit-box !important;
+    -webkit-line-clamp: 3 !important;
+    -webkit-box-orient: vertical !important;
+}
+
+.cardWrapper :global(.cardFooter) {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    padding-top: 12px !important;
+    border-top: 1px solid #e5e7eb !important;
+}
+
+.cardWrapper :global(.cardCity) {
+    font-size: 14px !important;
+    color: #6b7280 !important;
+}
+
+.empty {
+    text-align: center;
+    padding: 60px 20px;
+    color: #9ca3af;
+}
+
+.footer {
+    margin-top: 32px;
+    padding-top: 24px;
+    border-top: 1px solid #e5e7eb;
+    text-align: center;
+}
+
+.footerHint {
+    font-size: 14px;
+    color: #6b7280;
+    margin: 0 0 16px 0;
+}
+
+.closeBtn {
+    background: linear-gradient(135deg, #3876ff 0%, #5e8ffc 100%);
+    color: white;
+    border: none;
+    padding: 14px 40px;
+    border-radius: 50px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.closeBtn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(56, 118, 255, 0.3);
+}
+
+/* Планшеты */
+@media (max-width: 900px) {
+    .cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Мобильные */
+@media (max-width: 600px) {
+    .modal {
+        padding: 24px 16px;
+        border-radius: 20px;
+    }
+
+    .title {
+        font-size: 22px;
+    }
+
+    .cards {
+        grid-template-columns: 1fr;
+    }
+
+    .cardWrapper {
+        min-height: 380px;
+    }
+}
+
+/* ===== Анимация закрытия ===== */
+
+.overlayClosing {
+    animation: fadeOut 0.4s ease forwards;
+}
+
+.modalClosing {
+    animation: slideDown 0.4s ease forwards;
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+}

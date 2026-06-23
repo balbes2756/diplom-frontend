@@ -4,18 +4,21 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useModalStore } from "../../store/useModalStore";
 import { petSchema, type PetForm } from "../../schemas/pet";
 import { api } from "../../lib/api";
+import MatchedPetsModal from "../MatchModal/MatchModal";
 import styles from "./AddPetModal.module.css";
 
 interface AddPetModalProps {
     onSubmit: (data: PetForm) => void;
     initialCoords?: { lat: number; lng: number } | null;
     onRequestMapPick: () => void;
+    onPetCreated?: (pet: any) => void;
 }
 
 function AddPetModal({
     onSubmit,
     initialCoords,
     onRequestMapPick,
+    onPetCreated,
 }: AddPetModalProps) {
     const { isAddPetOpen, closeAddPet, initialStatus } = useModalStore();
 
@@ -31,6 +34,8 @@ function AddPetModal({
     const [imageFile, setImageFile] = useState<File | null>(null);
     const [imagePreview, setImagePreview] = useState<string | null>(null);
     const [uploadProgress, setUploadProgress] = useState(0);
+    const [showMatchedPets, setShowMatchedPets] = useState(false);
+    const [matchedPets, setMatchedPets] = useState<any[]>([]);
     const fileInputRef = useRef<HTMLInputElement>(null);
 
     // Синхронизация координат из MapPage
@@ -137,7 +142,95 @@ function AddPetModal({
         }
     };
 
-    // ✅ Исправленная функция отправки (теперь с загрузкой изображения)
+    // ФУНКЦИЯ ОТПРАВКИ
+    // const handleFormSubmit = async (data: PetForm) => {
+    //     setIsSubmitting(true);
+    //     setGeneralError(null);
+
+    //     try {
+    //         let imageUrl: string | null = null;
+
+    //         // 1. Загружаем изображение (если есть)
+    //         if (imageFile) {
+    //             setUploadProgress(10);
+    //             const formDataUpload = new FormData();
+    //             formDataUpload.append("file", imageFile);
+
+    //             const uploadResponse = await api.upload<{ url: string }>(
+    //                 "/uploads/image",
+    //                 formDataUpload,
+    //             );
+    //             imageUrl = uploadResponse.url;
+    //             setUploadProgress(100);
+    //         }
+
+    //         // 2. Передаём данные с URL изображения
+    //         const finalData = {
+    //             ...data,
+    //             image: imageUrl, // ← URL из Bucket.ru
+    //         };
+
+    //         await onSubmit(finalData);
+    //         handleClose();
+    //     } catch (error: any) {
+    //         console.error("Ошибка создания объявления:", error);
+
+    //         // 5. Показываем ошибку, но НЕ закрываем модалку
+    //         const errorMessage =
+    //             error.message || "Произошла ошибка при создании объявления";
+    //         setGeneralError(errorMessage);
+
+    //         setTimeout(() => {
+    //             const errorElement = document.querySelector(
+    //                 `.${styles.generalError}`,
+    //             );
+    //             errorElement?.scrollIntoView({
+    //                 behavior: "smooth",
+    //                 block: "center",
+    //             });
+    //         }, 100);
+    //     } finally {
+    //         setIsSubmitting(false);
+    //         setUploadProgress(0);
+    //     }
+    // };
+
+    //===== ДЛЯ ЗАГЛУШКИ =====
+    // const handleFormSubmit = async (data: PetForm) => {
+    //     setIsSubmitting(true);
+    //     setGeneralError(null);
+
+    //     try {
+    //         // Симуляция загрузки изображения
+    //         let imageUrl: string | null = null;
+
+    //         if (imageFile && imagePreview) {
+    //             imageUrl = imagePreview;
+    //             setUploadProgress(100);
+    //         }
+
+    //         // Симуляция задержки
+    //         await new Promise((resolve) => setTimeout(resolve, 1000));
+
+    //         // 🆕 Если "Найден" — НЕ закрываем AddPetModal, а открываем MatchedPetsModal поверх
+    //         if (data.status === "found") {
+    //             setTimeout(() => {
+    //                 setShowMatchedPets(true);
+    //             }, 300);
+    //         } else {
+    //             // Для "Пропал" — закрываем как обычно
+    //             handleClose();
+    //         }
+    //     } catch (error: any) {
+    //         console.error("Ошибка:", error);
+    //         setGeneralError("Произошла ошибка");
+    //     } finally {
+    //         setIsSubmitting(false);
+    //         setUploadProgress(0);
+    //     }
+    // };
+
+    //==== ТЕСТ CLIP ====
     const handleFormSubmit = async (data: PetForm) => {
         setIsSubmitting(true);
         setGeneralError(null);
@@ -145,7 +238,6 @@ function AddPetModal({
         try {
             let imageUrl: string | null = null;
 
-            // 1. Загружаем изображение (если есть)
             if (imageFile) {
                 setUploadProgress(10);
                 const formDataUpload = new FormData();
@@ -159,31 +251,33 @@ function AddPetModal({
                 setUploadProgress(100);
             }
 
-            // 2. Передаём данные с URL изображения
             const finalData = {
                 ...data,
-                image: imageUrl, // ← URL из Bucket.ru
+                image: imageUrl,
+                lat: coords?.lat,
+                lng: coords?.lng,
             };
 
-            await onSubmit(finalData);
-            handleClose();
+            // Отправляем на бэкенд
+            const response = await api.post<any>("/losts/", finalData);
+
+            console.log("✅ Объявление создано:", response);
+
+            // ✅ Вызываем callback для обновления списка
+            if (onPetCreated) {
+                onPetCreated(response);
+            }
+
+            // Если статус "found" и есть совпадения — показываем модалку
+            if (data.status === "found" && response.matched_pets?.length > 0) {
+                setMatchedPets(response.matched_pets); // ← Сохраняем реальные данные
+                setShowMatchedPets(true);
+            } else {
+                handleClose();
+            }
         } catch (error: any) {
             console.error("Ошибка создания объявления:", error);
-
-            // 5. Показываем ошибку, но НЕ закрываем модалку
-            const errorMessage =
-                error.message || "Произошла ошибка при создании объявления";
-            setGeneralError(errorMessage);
-
-            setTimeout(() => {
-                const errorElement = document.querySelector(
-                    `.${styles.generalError}`,
-                );
-                errorElement?.scrollIntoView({
-                    behavior: "smooth",
-                    block: "center",
-                });
-            }, 100);
+            setGeneralError(error.message || "Произошла ошибка");
         } finally {
             setIsSubmitting(false);
             setUploadProgress(0);
@@ -436,6 +530,17 @@ function AddPetModal({
                     )}
                 </form>
             </div>
+
+            {/* Модалка с возможными совпадениями (после публикации "found") */}
+            <MatchedPetsModal
+                isOpen={showMatchedPets}
+                onClose={() => {
+                    setShowMatchedPets(false);
+                    setMatchedPets([]); // ← Очищаем при закрытии
+                    handleClose();
+                }}
+                matchedPets={matchedPets} // ← Передаём реальные данные
+            />
         </div>
     );
 }

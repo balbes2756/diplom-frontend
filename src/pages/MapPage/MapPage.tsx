@@ -22,7 +22,7 @@ function MapPage() {
 
     const [pets, setPets] = useState<LostPet[]>([]);
     const [isLoading, setIsLoading] = useState(true);
-    const [pendingAddPet, setPendingAddPet] = useState(false); // ← НОВОЕ
+    const [pendingAddPet, setPendingAddPet] = useState(false);
 
     const [isPickingMode, setIsPickingMode] = useState(false);
     const [selectedCoords, setSelectedCoords] = useState<{
@@ -57,23 +57,15 @@ function MapPage() {
         fetchPets();
     }, []);
 
-    // ✅ НОВОЕ: После успешного входа — автоматически открываем модалку создания
     useEffect(() => {
         if (isAuthenticated && pendingAddPet) {
-            console.log(
-                "✅ Пользователь авторизован — открываем модалку создания",
-            );
             openAddPet();
             setPendingAddPet(false);
         }
     }, [isAuthenticated, pendingAddPet, openAddPet]);
 
-    // ✅ НОВОЕ: Если модалка входа закрылась без входа — сбрасываем флаг
     useEffect(() => {
         if (!isLoginOpen && pendingAddPet && !isAuthenticated) {
-            console.log(
-                "🚫 Модалка входа закрыта без авторизации — сбрасываем флаг",
-            );
             setPendingAddPet(false);
         }
     }, [isLoginOpen, pendingAddPet, isAuthenticated]);
@@ -101,9 +93,6 @@ function MapPage() {
 
     const handleLostClick = () => {
         if (!isAuthenticated) {
-            console.log(
-                "⚠️ Открываем модалку входа для создания объявления о пропаже",
-            );
             setPendingAddPet(true);
             openLogin();
             return;
@@ -112,14 +101,12 @@ function MapPage() {
     };
 
     const handleFoundClick = () => {
-        console.log("🔍 Открываем модалку создания объявления о находке");
         openAddPet("found");
     };
 
     const handlePetSubmit = async (data: PetForm) => {
         // Проверка авторизации только для "lost"
         if (data.status === "lost" && !isAuthenticated) {
-            console.log("⚠️ Для объявления о пропаже требуется авторизация");
             setPendingAddPet(true);
             openLogin();
             return;
@@ -140,39 +127,35 @@ function MapPage() {
                 contact_phone: data.contact_phone?.trim() || null,
             };
 
-            console.log("📤 Отправляем на бэкенд:", announcementData);
-
             const newPet = await api.post<LostPet>("/losts/", announcementData);
 
             setPets((prev) => [newPet, ...prev]);
             setSelectedCoords(null);
-            console.log("✅ Объявление создано:", newPet);
+            console.log("Объявление создано:", newPet);
         } catch (error: any) {
-            console.error("❌ Ошибка создания объявления:", error);
+            console.error("Ошибка создания объявления:", error);
 
             if (
                 error.message?.includes("401") ||
                 error.message?.includes("Unauthorized")
             ) {
-                // Если токен истёк при создании "lost" — открываем модалку входа
                 if (data.status === "lost") {
-                    console.log("⚠️ Токен истёк — открываем модалку входа");
                     setPendingAddPet(true);
                     openLogin();
                 } else {
                     alert(
-                        "⚠️ Срок действия сессии истёк. Пожалуйста, войдите снова.",
+                        "Срок действия сессии истёк. Пожалуйста, войдите снова.",
                     );
                 }
             } else {
                 alert(
-                    `❌ ${error.message || "Произошла ошибка при создании объявления"}`,
+                    `${error.message || "Произошла ошибка при создании объявления"}`,
                 );
             }
         }
     };
 
-    // ✅ Полное удаление объявления
+    // Полное удаление объявления
     const handleDelete = async (id: number) => {
         if (!isAuthenticated) {
             alert("⚠️ Для удаления объявления необходимо авторизоваться");
@@ -184,14 +167,11 @@ function MapPage() {
         }
 
         try {
-            console.log(`🗑️ Удаляем объявление #${id}`);
             await api.delete(`/losts/${id}`);
 
-            // Удаляем из локального стейта
             setPets((prev) => prev.filter((pet) => pet.id !== id));
-            console.log("✅ Объявление полностью удалено");
         } catch (error: any) {
-            console.error("❌ Ошибка удаления:", error);
+            console.error("Ошибка удаления:", error);
 
             if (error.message?.includes("403")) {
                 alert("⚠️ Вы не можете удалить чужое объявление");
@@ -203,13 +183,13 @@ function MapPage() {
                     "️ Срок действия сессии истёк. Пожалуйста, войдите снова.",
                 );
             } else {
-                alert(`❌ ${error.message || "Произошла ошибка при удалении"}`);
+                alert(`${error.message || "Произошла ошибка при удалении"}`);
             }
         }
     };
 
     const handleMapPick = (lat: number, lng: number) => {
-        console.log("📍 Выбраны координаты:", lat, lng);
+        console.log("Выбраны координаты:", lat, lng);
         setSelectedCoords({ lat, lng });
         setIsPickingMode(false);
     };
@@ -377,6 +357,10 @@ function MapPage() {
                 onSubmit={handlePetSubmit}
                 initialCoords={selectedCoords}
                 onRequestMapPick={() => setIsPickingMode(true)}
+                onPetCreated={(pet) => {
+                    setPets((prev) => [pet, ...prev]);
+                    setSelectedCoords(null);
+                }}
             />
         </div>
     );
