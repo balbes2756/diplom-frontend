@@ -8,7 +8,7 @@ import MatchedPetsModal from "../MatchModal/MatchModal";
 import styles from "./AddPetModal.module.css";
 
 interface AddPetModalProps {
-    _onSubmit?: (data: PetForm) => void;
+    onSubmit?: (data: PetForm) => void;
     initialCoords?: { lat: number; lng: number } | null;
     onRequestMapPick: () => void;
     onPetCreated?: (pet: any) => void;
@@ -262,6 +262,10 @@ function AddPetModal({
             const response = await api.post<any>("/losts/", finalData);
 
             console.log("✅ Объявление создано:", response);
+
+            if (onSubmit) {
+                onSubmit(data);
+            }
 
             // ✅ Вызываем callback для обновления списка
             if (onPetCreated) {
