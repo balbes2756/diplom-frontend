@@ -8,7 +8,7 @@ import MatchedPetsModal from "../MatchModal/MatchModal";
 import styles from "./AddPetModal.module.css";
 
 interface AddPetModalProps {
-    onSubmit: (data: PetForm) => void;
+    _onSubmit?: (data: PetForm) => void;
     initialCoords?: { lat: number; lng: number } | null;
     onRequestMapPick: () => void;
     onPetCreated?: (pet: any) => void;
