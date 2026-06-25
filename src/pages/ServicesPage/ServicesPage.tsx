@@ -50,12 +50,14 @@ function ServicesPage() {
                         <div className={styles.filtersContainer}>
                             {/* Строка поиска */}
                             <div className={styles.searchContainer}>
-                                <div className={styles.searchIcon}>🔍</div>
-                                <input
-                                    type="text"
-                                    placeholder="Поиск услуг, специалистов..."
-                                    className={styles.searchInput}
-                                />
+                                <div className={styles.searchInputWrapper}>
+                                    <div className={styles.searchIcon}>🔍</div>
+                                    <input
+                                        type="text"
+                                        placeholder="Поиск услуг, специалистов..."
+                                        className={styles.searchInput}
+                                    />
+                                </div>
                                 <button className={styles.searchButton}>
                                     Найти
                                 </button>
