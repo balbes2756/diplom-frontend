@@ -514,64 +514,26 @@
 
 /* ==================== RESPONSIVE ==================== */
 
-/* Desktop (1024px) */
-@media (max-width: 1024px) {
+@media (max-width: 768px) {
+    .page {
+        max-width: 100%;
+    }
+
+    /* Hero Section */
     .hero {
-        padding: 100px 60px 40px;
+        min-height: 80vh;
+        padding: 0 20px 20px;
+    }
+
+    .heroTitle {
+        font-size: 1.2em;
+        gap: 8px;
     }
 
     .titleLine1,
     .titleLine2,
     .titleLine3 {
-        font-size: 72px;
-    }
-
-    .titleLine2 {
-        margin-left: 80px;
-    }
-
-    .titleLine3 {
-        margin-left: 160px;
-    }
-
-    .gridSection {
-        padding: 40px 60px;
-    }
-
-    .gridContainer {
-        gap: 20px;
-    }
-
-    .card {
-        min-height: 240px;
-        padding: 24px;
-    }
-
-    .cardTitle {
-        font-size: 28px;
-    }
-
-    .dogImage {
-        width: 150px;
-        height: 150px;
-    }
-
-    .smileIcon {
-        right: -150px;
-        bottom: -150px;
-    }
-}
-
-/* Mobile (480px) */
-@media (max-width: 480px) {
-    .hero {
-        padding: 60px 20px 20px;
-    }
-
-    .titleLine1,
-    .titleLine2,
-    .titleLine3 {
-        font-size: 42px;
+        font-size: 2.5em;
     }
 
     .titleLine2 {
@@ -582,26 +544,324 @@
         margin-left: 80px;
     }
 
+    /* Grid Section */
     .gridSection {
-        padding: 20px 20px;
+        padding: 30px 20px;
+    }
+
+    .gridContainer {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+        gap: 16px;
+    }
+
+    .cardLarge,
+    .cardSmall {
+        grid-column: span 1;
     }
 
     .card {
-        padding: 20px;
-        min-height: 180px;
+        min-height: 200px;
+        padding-left: 20px;
+        padding-right: 20px;
     }
 
-    .cardTitle {
-        font-size: 20px;
+    .cardLarge .cardTitle {
+        font-size: 2em;
+    }
+
+    .cardSmall .cardTitle {
+        font-size: 1.5em;
     }
 
     .cardButton {
         padding: 10px 20px;
-        font-size: 13px;
+        font-size: 12px;
     }
 
     .dogImage {
+        width: 200px;
+        height: 200px;
+        right: 20px;
+    }
+
+    .pawImage {
+        width: 150px;
+        left: -30px;
+        bottom: -20px;
+    }
+
+    .servicesSvg {
+        width: 80px;
+        height: 80px;
+        left: 20px;
+        bottom: 20px;
+    }
+
+    .cardArrow {
+        width: 60px;
+        height: 60px;
+        right: 20px;
+        bottom: 20px;
+    }
+
+    .cardArrow svg {
+        width: 30px;
+        height: 30px;
+    }
+
+    /* About Section */
+    .aboutSection {
+        padding: 40px 20px;
+    }
+
+    .aboutContainer {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .aboutContent {
+        max-width: 100%;
+        height: auto;
+        font-size: 18px;
+    }
+
+    .aboutTitle {
+        font-size: 2.5em;
+    }
+
+    .aboutText {
+        gap: 24px;
+    }
+
+    .aboutText p {
+        font-size: 1em;
+        line-height: 1.6;
+    }
+
+    .aboutImage {
+        width: 100%;
+        max-width: 400px;
+        height: auto;
+        aspect-ratio: 1;
+        border-radius: 40px;
+    }
+
+    /* Why Us Section */
+    .whySection {
+        padding: 40px 20px;
+    }
+
+    .whyContainer {
+        font-size: 18px;
+    }
+
+    .whyTitle {
+        font-size: 2.5em;
+        margin-bottom: 24px;
+    }
+
+    .whyCards {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+        gap: 16px;
+    }
+
+    .whyCardLarge {
+        grid-column: span 1;
+    }
+
+    .whyCard {
+        min-height: 200px;
+        padding: 24px;
+        font-size: 18px;
+    }
+
+    .whyCardTitle {
+        font-size: 1.5em;
+    }
+
+    .whyCardIcon,
+    .communityIcons,
+    .smileIcon {
+        width: 80px;
+        height: 80px;
+    }
+
+    .whyCardIcon {
+        left: -60px;
+        bottom: -60px;
+    }
+
+    .communityIcons {
+        right: -150px;
+        bottom: -50px;
+    }
+
+    .smileIcon {
+        right: -100px;
+        bottom: -100px;
+    }
+
+    /* Testimonials Section */
+    .testimonialsSection {
+        padding: 40px 20px;
+    }
+
+    .testimonialsContainer {
+        font-size: 18px;
+    }
+
+    .testimonialsHeader {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+    }
+
+    .testimonialsTitle {
+        font-size: 2.5em;
+        margin-bottom: 20px;
+    }
+
+    .testimonialsNav {
+        margin-top: 0;
+        margin-bottom: 20px;
+        display: none;
+    }
+
+    .navArrow {
+        width: 60px;
+        height: 60px;
+    }
+
+    .navArrow svg {
+        width: 30px;
+        height: 30px;
+    }
+
+    .testimonialsCards {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+        gap: 16px;
+    }
+
+    .testimonialCard {
+        min-height: auto;
+        padding: 24px;
+        font-size: 14px;
+    }
+
+    .testimonialAvatar {
+        width: 120px;
+        height: 120px;
+    }
+
+    .avatarPlaceholder {
+        font-size: 24px;
+    }
+
+    .testimonialText {
+        font-size: 1.1em;
+        line-height: 1.5;
+    }
+
+    .testimonialAuthor {
+        gap: 6px;
+    }
+
+    .authorName,
+    .authorAge {
+        font-size: 1.2em;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero {
+        min-height: 70vh;
+        padding: 0 16px 16px;
+    }
+
+    .heroTitle {
+        font-size: 1em;
+    }
+
+    .titleLine1,
+    .titleLine2,
+    .titleLine3 {
+        font-size: 2em;
+    }
+
+    .titleLine2 {
+        margin-left: 30px;
+    }
+
+    .titleLine3 {
+        margin-left: 60px;
+    }
+
+    .gridSection,
+    .aboutSection,
+    .whySection,
+    .testimonialsSection {
+        padding: 30px 16px;
+    }
+
+    .card {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+    .cardLarge .cardTitle {
+        font-size: 1.8em;
+    }
+
+    .cardSmall .cardTitle {
+        font-size: 1.3em;
+    }
+
+    .dogImage {
+        width: 150px;
+        height: 150px;
+        right: 10px;
+    }
+
+    .aboutTitle,
+    .whyTitle,
+    .testimonialsTitle {
+        font-size: 2em;
+    }
+
+    .aboutContent {
+        font-size: 16px;
+    }
+
+    .aboutText p {
+        font-size: 0.95em;
+    }
+
+    .whyCard {
+        padding: 20px;
+    }
+
+    .whyCardTitle {
+        font-size: 1.3em;
+    }
+
+    .testimonialCard {
+        padding: 20px;
+    }
+
+    .testimonialAvatar {
         width: 100px;
         height: 100px;
+    }
+
+    .testimonialText {
+        font-size: 1em;
+    }
+
+    .authorName,
+    .authorAge {
+        font-size: 1.1em;
     }
 }
